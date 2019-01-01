@@ -19,6 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 
+    <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+
     <title> Siyoth.lk </title>
 
 </head>
@@ -37,7 +39,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='home'){echo " active";}?>" href="<?php echo base_url('index.php/home'); ?>">Home <span class="sr-only">(current)</span></a>
+                <?php
+                if($this->session->userdata('admin_flag')==1) {
+                    if($page=='dashboard') {
+                        echo "<a class=\"nav-link active\" href=\"" . base_url('index.php/home/dashboard') . "\"> Dashboard <span class=\"sr-only\"></span></a>";
+                    }
+                    else {
+                        echo "<a class=\"nav-link\" href=\"" . base_url('index.php/home/dashboard') . "\"> Dashboard <span class=\"sr-only\"></span></a>";
+                    }
+                }
+                else {
+                    if($page=='home') {
+                        echo "<a class=\"nav-link active\" href=\"" . base_url('index.php/home') . "\"> Home <span class=\"sr-only\"></span></a>";
+                    }
+                    else {
+                        echo "<a class=\"nav-link\" href=\"" . base_url('index.php/home') . "\"> Home <span class=\"sr-only\"></span></a>";
+                    }
+                }
+                ?>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if($page=='bird_wiki'){echo " active";}?>" href="<?php echo base_url('index.php/home/bird_wiki') ?>">Bird WiKi</a>
@@ -52,7 +71,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link <?php if($page=='events'){echo " active";}?>" href="<?php echo base_url('index.php/home/events') ?>">Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='sanctuaries'){echo " active";}?>" href="#">Sanctuaries</a>
+                <a class="nav-link <?php if($page=='sanctuaries'){echo " active";}?>" href="<?php echo base_url('index.php/home/sanctuary') ?>">Sanctuaries</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php if($page=='gallery'){echo " active";}?>" href="<?php echo base_url('index.php/home/get_photos') ?>">Gallery</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

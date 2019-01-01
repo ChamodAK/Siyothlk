@@ -60,7 +60,10 @@ if($this->session->userdata('admin_flag')!=1) {
                 <a class="nav-link <?php if($page=='events'){echo " active";}?>" href="<?php echo base_url('index.php/home/events') ?>">Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='sanctuaries'){echo " active";}?>" href="#">Sanctuaries</a>
+                <a class="nav-link <?php if($page=='sanctuaries'){echo " active";}?>" href="<?php echo base_url('index.php/home/sanctuary') ?>">Sanctuaries</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php if($page=='gallery'){echo " active";}?>" href="<?php echo base_url('index.php/home/get_photos') ?>">Gallery</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
