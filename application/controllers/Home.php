@@ -80,6 +80,10 @@ class Home extends CI_Controller {
         }
     }
 
+    public function forum() {
+        $this->load->view('forum');
+    }
+
 
 
 }

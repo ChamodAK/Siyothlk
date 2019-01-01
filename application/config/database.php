@@ -78,11 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-<<<<<<< HEAD
 	'database' => 'siyothlk',
-=======
-	'database' => 'siyothnew',
->>>>>>> upstream/master
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
