@@ -51,7 +51,7 @@
             echo $this->session->flashdata('msg');
         }
         ?>
-        <div class="col-8">
+        <div class="col-11">
             <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top">Replies</h2>
             <table class="table table-striped table-bordered table-responsive-lg">
                 <thead class="thead-light">
@@ -61,12 +61,13 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php if(!empty($replies)) { foreach ($replies as $reply) {?>
                 <tr>
                     <td class="author-col">
-                        <div><a href="#"><?php echo $post['username']; ?></a></div>
+                        <div><a href="#"><?php echo $reply->username; ?></a></div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
-                        <div><span class="font-weight-bold">Posted:</span><?php echo $post['timeStamp']; ?></div>
+                        <div><span class="font-weight-bold">Posted:</span><?php echo $reply->date_posted; ?></div>
                     </td>
                 </tr>
                 <tr>
@@ -75,9 +76,10 @@
                         <div><span class="font-weight-bold">Posts:</span> <br>123</div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
-                        <p><?php echo $post['details']; ?></p>
+                        <p><?php echo $reply->details; ?></p>
                     </td>
                 </tr>
+                <?php } }?>
                 </tbody>
             </table>
         </div>

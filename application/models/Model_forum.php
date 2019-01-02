@@ -58,4 +58,18 @@ class Model_forum extends CI_Model {
 
         return $this->db->insert('forum_reply', $data);
     }
+
+    public function get_replies() {
+
+        $query = $this->db->query("SELECT forum_reply.details, forum_reply.date_posted, user.username FROM siyothlk.forum_reply JOIN user on forum_reply.user_id = user.userId ORDER BY forum_reply.date_posted DESC;");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+
+    }
 }

@@ -17,7 +17,7 @@ class Forum extends CI_Controller {
         $post_id = $this->uri->segment(3);
 
 
-        //$data['replies'] = $this->Model_Forum->get_replies($id);
+        $data['replies'] = $this->Model_Forum->get_replies($id);
 
         if($result!=false) {
 
