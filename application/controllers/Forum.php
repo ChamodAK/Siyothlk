@@ -8,8 +8,56 @@
 
 class Forum extends CI_Controller {
 
-    public function full_forum(){
-        $this->load->view('forum_full_topic');
+    public function full_post($id) {
+
+        //$id = $this->input->get('id');
+        $this->load->model('Model_Forum');
+
+        $result = $this->Model_Forum->get_full_post($id);
+        $post_id = $this->uri->segment(3);
+
+
+        //$data['replies'] = $this->Model_Forum->get_replies($id);
+
+        if($result!=false) {
+
+            $data['post'] = array(
+
+                'id' => $result->id,
+                'title' => $result->title,
+                'details' => $result->details,
+                'timeStamp' => $result->timeStamp,
+                'image' => $result->image,
+                'userId' => $result->userId,
+                'username' => $result->username
+
+            );
+
+            $this->load->view('forum_full_post', $data);
+
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+        if ($this->input->post('content')) {
+            if(!$this->session->userdata('username')) {
+                redirect('Home/login');
+            }
+            echo $post_id;
+
+            $result2 = $this->Model_Forum->add_new_reply($post_id);
+
+            if ($result2) {
+
+                $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Submitted Successfully! </div>');
+                redirect('Forum/full_post/'.$post_id);
+            } else {
+                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+                redirect('Forum/full_post/'.$post_id);
+            }
+        }
+
     }
 
     public function add_post() {

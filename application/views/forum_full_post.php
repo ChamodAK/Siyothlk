@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top">Forum Post</h2>
+            <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top"><?php echo $post['title']; ?></h2>
             <table class="table table-striped table-bordered table-responsive-lg">
                 <thead class="thead-light">
                 <tr>
@@ -24,11 +24,11 @@
                 <tbody>
                 <tr>
                     <td class="author-col">
-                        <div><a href="#">Author name</a></div>
+                        <div><a href="#"><?php echo $post['username']; ?></a></div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
-                        <div><span class="font-weight-bold">Post subject:</span> Forum Topic</div>
-                        <div><span class="font-weight-bold">Posted:</span> 01 jan 2019, 15:43</div>
+                        <div><span class="font-weight-bold">Post subject:</span><?php echo $post['title']; ?></div>
+                        <div><span class="font-weight-bold">Posted:</span><?php echo $post['timeStamp']; ?></div>
                     </td>
                 </tr>
                 <tr>
@@ -37,23 +37,36 @@
                         <div><span class="font-weight-bold">Posts:</span> <br>123</div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Ab, accusantium ad assumenda aut consectetur cumque deserunt
-                            doloremque esse eveniet impedit ipsum perspiciatis placeat
-                            praesentium quasi, quo repellendus repudiandae sed tenetur?</p>
+                        <p><?php echo $post['details']; ?></p>
+                        <img src="<?php echo $post['image']; ?>" class="img-fluid" alt="Image not available">
                     </td>
                 </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="container">
+        <?php
+        if($this->session->flashdata('msg')) {
+            echo $this->session->flashdata('msg');
+        }
+        ?>
+        <div class="col-8">
+            <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top">Replies</h2>
             <table class="table table-striped table-bordered table-responsive-lg">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Replied by</th>
+                    <th scope="col">Reply</th>
+                </tr>
+                </thead>
                 <tbody>
                 <tr>
                     <td class="author-col">
-                        <div><a href="#">Author name</a></div>
+                        <div><a href="#"><?php echo $post['username']; ?></a></div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
-                        <div><span class="font-weight-bold">Post subject:</span> Forum Topic</div>
-                        <div><span class="font-weight-bold">Posted:</span> 01 jan 2019, 15:43</div>
+                        <div><span class="font-weight-bold">Posted:</span><?php echo $post['timeStamp']; ?></div>
                     </td>
                 </tr>
                 <tr>
@@ -61,18 +74,8 @@
                         <div><span class="font-weight-bold">Joined:</span> <br>01 jan 2019, 15:43</div>
                         <div><span class="font-weight-bold">Posts:</span> <br>123</div>
                     </td>
-                    <td class="post-col">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Ab, accusantium ad assumenda aut consectetur cumque deserunt
-                            doloremque esse eveniet impedit ipsum perspiciatis placeat
-                            praesentium quasi, quo repellendus repudiandae sed tenetur?</p>
-
-                        <img src="https://placehold.it/600x400" class="img-fluid" alt="">
-                        
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Ab, accusantium ad assumenda aut consectetur cumque deserunt
-                            doloremque esse eveniet impedit ipsum perspiciatis placeat
-                            praesentium quasi, quo repellendus repudiandae sed tenetur?</p>
+                    <td class="post-col d-lg-flex justify-content-lg-between">
+                        <p><?php echo $post['details']; ?></p>
                     </td>
                 </tr>
                 </tbody>
@@ -92,14 +95,15 @@
             </ul>
         </nav>
     </div>
+    <?php echo form_open('Forum/full_post/'.$post['id']); ?>
     <form class="mb-3" action="">
         <div class="form-group">
             <label for="comment">Reply to this post:</label>
-            <textarea class="form-control" name="" id="comment" cols="30" rows="10" placeholder="Write your comment here." required></textarea>
+            <textarea class="form-control" name="content" cols="30" rows="10" placeholder="Write your reply here." required><?php echo set_value('content'); ?></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Reply</button>
-        <button type="reset" class="btn btn-danger">Reset</button>
     </form>
+    <?php echo form_close(); ?>
 </div>
 
 

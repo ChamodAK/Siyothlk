@@ -46,7 +46,7 @@
                     <?php if(!empty($posts)) { foreach ($posts as $post) {?>
                     <tr>
                         <td>
-                            <h6><a href="<?php echo base_url('index.php/forum/full_forum')?>"><?php echo $post->title;?></a></h6>
+                            <h6><a href="<?php echo base_url('index.php/forum/full_post')?><?php echo "/".$post->id;?>"><?php echo $post->title;?></a></h6>
                         </td>
                         <td>
                             <div><h6 class="h6">by <a href="#"><?php echo $post->username;?></a></h6></div>
