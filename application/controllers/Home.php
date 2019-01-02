@@ -81,7 +81,19 @@ class Home extends CI_Controller {
     }
 
     public function forum() {
-        $this->load->view('forum');
+
+        $this->load->model('Model_Forum');
+        $result['posts'] = $this->Model_Forum->get_posts();
+
+        if($result!=false) {
+
+            $this->load->view('forum', $result);
+
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
     }
 
 

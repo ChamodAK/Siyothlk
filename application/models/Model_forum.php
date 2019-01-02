@@ -22,4 +22,18 @@ class Model_forum extends CI_Model {
 
         return $this->db->insert('forum', $data);
     }
+
+    public function get_posts() {
+
+        $query = $this->db->query("SELECT forum.title, forum.timeStamp, user.username FROM siyothlk.forum JOIN user on forum.userId = user.userId ORDER BY forum.timeStamp DESC;");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+
+    }
 }

@@ -43,14 +43,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php if(!empty($posts)) { foreach ($posts as $post) {?>
                     <tr>
                         <td>
-                            <h6 class="h6"><span class="badge badge-primary">7 unread</span><a href="<?php echo base_url('index.php/forum/full_forum')?>">Forum title has to be go in here</a></h6>
-                            <div class="small">Go to page:<a href="#">1</a>,<a href="#">2</a>,<a href="#">3</a>&hellip;<a href="#">7</a>,<a href="#">8</a>,<a href="#">9</a></div>
+                            <h6><a href="<?php echo base_url('index.php/forum/full_forum')?>"><?php echo $post->title;?></a></h6>
                         </td>
                         <td>
-                            <div><h6 class="h6">by <a href="#">Author Name</a></h6></div>
-                            <div>01 jan 2019, 15:43</div>
+                            <div><h6 class="h6">by <a href="#"><?php echo $post->username;?></a></h6></div>
+                            <div><?php echo $post->timeStamp;?></div>
                         </td>
                         <td>
                             <div>5 replies</div>
@@ -61,41 +61,7 @@
                             <div>01 jan 2019, 15:43</div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <h6 class="h6"><span class="badge badge-primary">7 unread</span><a href="#">Forum title has to be go in here</a></h6>
-                            <div class="small">Go to page:<a href="#">1</a>,<a href="#">2</a>,<a href="#">3</a>&hellip;<a href="#">7</a>,<a href="#">8</a>,<a href="#">9</a></div>
-                        </td>
-                        <td>
-                            <div><h6 class="h6">by <a href="#">Author Name</a></h6></div>
-                            <div>01 jan 2019, 15:43</div>
-                        </td>
-                        <td>
-                            <div>5 replies</div>
-                            <div>120 views</div>
-                        </td>
-                        <td>
-                            <div><h6 class="h6">by <a href="#">Author Name</a></h6></div>
-                            <div>01 jan 2019, 15:43</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6 class="h6 mb-0"><a href="#">Forum name</a></h6>
-                        </td>
-                        <td>
-                            <div><h6 class="h6">by <a href="#">Author Name</a></h6></div>
-                            <div>01 jan 2019, 15:43</div>
-                        </td>
-                        <td>
-                            <div>5 replies</div>
-                            <div>120 views</div>
-                        </td>
-                        <td>
-                            <div><h6 class="h6">by <a href="#">Author Name</a></h6></div>
-                            <div>01 jan 2019, 15:43</div>
-                        </td>
-                    </tr>
+                    <?php } }?>
                 </tbody>
             </table>
         </div>

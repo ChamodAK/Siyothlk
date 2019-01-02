@@ -1,5 +1,11 @@
 <?php $page = 'forum_add_topic'; include 'header.php'?>
 
+<?php
+if(!$this->session->userdata('username')) {
+    redirect('Home/login');
+}
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
