@@ -25,6 +25,11 @@
     Have fun sharing your experiences, showing off your photos and getting in touch with people like you.</h5>
 
 <div class="container">
+    <?php
+    if($this->session->flashdata('msg')) {
+        echo $this->session->flashdata('msg');
+    }
+    ?>
     <div class="row">
         <div class="col-12 col-xl-9">
             <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top">Forum Topics</h2>
@@ -188,7 +193,7 @@
             <button type="submit" class="btn btn-sm btn-primary">Go</button>
         </form>
     </div>
-    <a href="<?php echo base_url('index.php/forum/add_topic'); ?>" class="btn btn-lg btn-primary">New Topic</a>
+    <a href="<?php echo base_url('index.php/forum/add_post'); ?>" class="btn btn-lg btn-primary">New Topic</a>
 </div>
 
 
