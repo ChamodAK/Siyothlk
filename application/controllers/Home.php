@@ -79,7 +79,7 @@ class Home extends CI_Controller {
 
     }
 
-    public function get_photos(){
+    public function gallery(){
 
         $this->load->model("Model_gallery");
         $result['photos']=$this->Model_gallery->get_photo();
@@ -88,6 +88,26 @@ class Home extends CI_Controller {
             $this->load->view('Gallery',$result);
 
         }
+    }
+
+    public function forum() {
+
+        $this->load->model('Model_Forum');
+        $result['posts'] = $this->Model_Forum->get_posts();
+
+        if($result!=false) {
+
+            $this->load->view('forum', $result);
+
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function sanctuary_map() {
+	    $this->load->view('map_sanctuary');
     }
 
 
