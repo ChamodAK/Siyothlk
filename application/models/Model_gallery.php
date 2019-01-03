@@ -15,8 +15,34 @@ class Model_gallery extends CI_Model
         return $data;
     }
 
-    public function insert_photo(){
-        echo "done";
+    public function bird_list(){
+        $data=array();
+        $query= $this->db->query("SELECT comName FROM siyothlk.bird ;");
+        if($query->num_rows()>0){
+            foreach($query->result() as $row){
+                $data[]=$row;
+            }
+
+        }
+        return $data;
+
+    }
+
+    public function cat_list(){
+        $data=array();
+        $query= $this->db->query("SELECT id,name,details FROM siyothlk.category ;");
+        if($query->num_rows()>0){
+            foreach($query->result() as $row){
+                $data[]=$row;
+            }
+
+        }
+        return $data;
+
+    }
+
+    public function insert_photo($img_data){
+        echo "done1";
 
 
         $mapimg=0;
@@ -28,19 +54,23 @@ class Model_gallery extends CI_Model
         }
         $data = array(
 
-            'name' => $this->input->post('name', TRUE),
-            'link' => $this->input->post('photo', TRUE),
+            'name' => $this->input->post('bird', TRUE),
+            'link' => $img_data,
             'timeStamp'=> date ('Y-m-d H:i:s'),
-            'latitude'=> 1,
-            'longitude'=> 1,
+            'latitude'=> $this->input->get('lat',True),
+            'longitude'=> $this->input->get('lng',True),
             'mapImage'=>$mapimg,
             'galImage'=>$galimg,
             'userId'=> $this->session->userdata('id')
         );
-        echo "done";
+        echo $data['longitude'];
 
         return $this->db->insert('image', $data);
-        echo "done";
+        echo "done2";
 
     }
+
+
+
+
 }
