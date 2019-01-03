@@ -7,7 +7,17 @@ class Admin extends CI_Controller {
     }
 
     public function wiki() {
-        $this->load->view('admin/admin_dash_wiki');
+
+        $this->load->model('Model_Bird_Wiki');
+        $result['contents'] = $this->Model_Bird_Wiki->get_edited_contents();
+
+        if($result!=false) {
+            $this->load->view('admin/admin_dash_wiki', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
     }
 
     public function news() {
@@ -76,6 +86,70 @@ class Admin extends CI_Controller {
             }
 
         }
+
+    }
+
+    public function add_bird() {
+        $this->load->view('admin/add_bird');
+    }
+
+    public function edit_bird() {
+
+        $this->load->model('Model_Bird_Wiki');
+        $result['birds'] = $this->Model_Bird_Wiki->get_bird_list();
+
+        if($result!=false) {
+            $this->load->view('admin/edit_bird', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function approve_changes($id) {
+
+        $this->load->model('Model_Bird_Wiki');
+        $result = $this->Model_Bird_Wiki->approve_changes($id);
+
+        if(($result['var1'] && $result['var2'])!=false) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Changes Applied Successfully! </div>');
+            redirect('admin/wiki');
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function dismiss_changes($id) {
+
+        $this->load->model('Model_Bird_Wiki');
+        $result = $this->Model_Bird_Wiki->dismiss_changes($id);
+
+        if($result != false) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Changes Dismissed Successfully! </div>');
+            redirect('admin/wiki');
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function edit_bird_admin () {
+
+        $this->load->model('Model_Bird_Wiki');
+        $result = $this->Model_Bird_Wiki->add_edit_bird_admin();
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Changes Submitted Successfully! </div>');
+            redirect('Admin/wiki');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('Admin/wiki');
+        }
+
 
     }
 

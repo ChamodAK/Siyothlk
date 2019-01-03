@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 
-    <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js"></script>
 
     <title> Siyoth.lk </title>
 

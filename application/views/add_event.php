@@ -2,6 +2,7 @@
 
     <?php
     if(!$this->session->userdata('username')) {
+        $this->session->set_userdata('page_url',  current_url());
         redirect('Home/login');
     }
     ?>

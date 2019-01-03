@@ -12,7 +12,7 @@
                     </div>
                     <a href="<?=base_url('index.php/home/bird_wiki')?>" class="btn btn-light" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> Bird Wiki </a>
                     <?php if(!$this->session->userdata('loggedIn')):?>
-                    <a href="<?=base_url('index.php/home/sign_up')?>" class="btn btn-light" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> Be a Member </a>
+                    <a href="<?=base_url('index.php/home/sign_up')?>" class="btn btn-outline-light" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> Be a Member </a>
                     <?php endif; ?>
                 </div>
             </div>

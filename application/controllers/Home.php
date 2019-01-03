@@ -20,7 +20,17 @@ class Home extends CI_Controller {
     }
 
     public function bird_wiki() {
-        $this->load->view('wiki_home');
+
+        $this->load->model('Model_Bird_Wiki');
+        $result['birds'] = $this->Model_Bird_Wiki->get_few_birds();
+
+        if($result!=false) {
+            $this->load->view('bird_wiki', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
     }
 
     public function sanctuary() {

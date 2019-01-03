@@ -31,7 +31,13 @@ class Login extends CI_Controller {
                 );
 
                 $this->session->set_userdata($user_details);
-                redirect('home');
+
+                if($this->session->userdata('page_url')) {
+                    redirect($this->session->userdata('page_url'));
+                }
+                else {
+                    redirect('home');
+                }
 
             }
             else {
