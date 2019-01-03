@@ -1,6 +1,6 @@
 <div class="sidebar">
 
-    <a href="#home" style="padding-bottom: 10px;"><i class="fas fa-search"></i> Advanced Search </a>
+    <a href="<?php echo base_url('index.php/Wiki/advanced_search_view')?>" style="padding-bottom: 10px;"><i class="fas fa-search"></i> Advanced Search </a>
 
     <a href="<?php echo base_url('index.php/Wiki/bird_list')?>"><i class="fas fa-clipboard-list"></i> Bird List </a>
 

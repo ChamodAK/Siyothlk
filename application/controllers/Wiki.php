@@ -155,5 +155,51 @@ class Wiki extends CI_Controller{
 
     }
 
+    public function advanced_search_view() {
+
+        $this->load->view('advanced_search');
+
+    }
+
+    public function advanced_search() {
+
+        $size = $this->input->post('size');
+        $location = $this->input->post('location');
+        $colours = $this->input->post('colour');
+        $col_length = sizeof($colours);
+
+        if(!($col_length==1 or $col_length==2)) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Please select one or two colours only! </div>');
+            redirect('Wiki/advanced_search_view');
+        }
+        elseif($col_length==1) {
+
+            $this->load->model('Model_Bird_Wiki');
+            $result['birds'] = $this->Model_Bird_Wiki->advanced_search($size, $colours[0], $location);
+
+            if($result!=false) {
+                $this->load->view('advanced_search_result', $result);
+            }
+            else {
+                echo "Something went wrong !";
+            }
+
+        }
+        else {
+
+            $this->load->model('Model_Bird_Wiki');
+            $result['birds'] = $this->Model_Bird_Wiki->advanced_search_2($size, $colours[0], $colours[1], $location);
+
+            if($result!=false) {
+                $this->load->view('advanced_search_result', $result);
+            }
+            else {
+                echo "Something went wrong !";
+            }
+
+        }
+
+    }
+
 
 }

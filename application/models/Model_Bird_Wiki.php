@@ -166,6 +166,56 @@ class Model_Bird_Wiki extends CI_Model {
 
     }
 
+    public function advanced_search($size, $colour, $location) {
+
+        $query = $this->db->query("SELECT bird.birdId, bird.comName, bird.sciName, bird.image FROM siyothlk.bird JOIN siyothlk.bird_colour ON bird.birdId = bird_colour.birdId JOIN siyothlk.bird_loc ON bird.birdId = bird_loc.birdId WHERE bird.size = '$size' AND bird_colour.colour = '$colour' AND bird_loc.location = '$location';");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else {
+
+            $query = $this->db->query("SELECT DISTINCT bird.birdId, bird.comName, bird.sciName, bird.image FROM siyothlk.bird JOIN siyothlk.bird_colour ON bird.birdId = bird_colour.birdId JOIN siyothlk.bird_loc ON bird.birdId = bird_loc.birdId WHERE bird.size = '$size' AND (bird_colour.colour = '$colour' OR bird_loc.location = '$location');");
+
+            if($query->num_rows()>0) {
+                foreach ($query->result() as $row) {
+                    $data[] = $row;
+                }
+                return $data;
+            }
+
+        }
+
+    }
+
+    public function advanced_search_2($size, $colour1, $colour2, $location) {
+
+        $query = $this->db->query("SELECT DISTINCT bird.birdId, bird.comName, bird.sciName, bird.image FROM siyothlk.bird JOIN siyothlk.bird_colour ON bird.birdId = bird_colour.birdId JOIN siyothlk.bird_loc ON bird.birdId = bird_loc.birdId WHERE bird.size = '$size' AND bird_colour.colour IN ('$colour1', '$colour2') AND bird_loc.location = '$location';");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        else {
+
+            $query = $this->db->query("SELECT DISTINCT bird.birdId, bird.comName, bird.sciName, bird.image FROM siyothlk.bird JOIN siyothlk.bird_colour ON bird.birdId = bird_colour.birdId JOIN siyothlk.bird_loc ON bird.birdId = bird_loc.birdId WHERE bird.size = '$size' AND (bird_colour.colour IN ('$colour1', '$colour2') OR bird_loc.location = '$location');");
+
+            if($query->num_rows()>0) {
+                foreach ($query->result() as $row) {
+                    $data[] = $row;
+                }
+                return $data;
+            }
+
+        }
+
+    }
+
 
 
 }
