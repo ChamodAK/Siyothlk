@@ -159,7 +159,7 @@
             <button type="submit" class="btn btn-sm btn-primary">Go</button>
         </form>
     </div>
-    <a href="<?php echo base_url('index.php/forum/add_post'); ?>" class="btn btn-lg btn-primary">New Topic</a>
+    <a href="<?php echo base_url('index.php/forum/add_post'); ?>" class="btn btn-lg btn-primary">New Post</a>
 </div>
 
 
