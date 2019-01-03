@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link <?php if($page=='news_articles'){echo " active";}?>" href="<?php echo base_url('index.php/home/news_and_articles') ?>">News & Articles</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='forum'){echo " active";}?>" href="#">Forum</a>
+                <a class="nav-link <?php if($page=='forum'){echo " active";}?>" href="<?php echo base_url('index.php/home/forum') ?>">Forum</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if($page=='events'){echo " active";}?>" href="<?php echo base_url('index.php/home/events') ?>">Events</a>
@@ -74,10 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link <?php if($page=='sanctuaries'){echo " active";}?>" href="<?php echo base_url('index.php/home/sanctuary') ?>">Sanctuaries</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='gallery'){echo " active";}?>" href="<?php echo base_url('index.php/home/get_photos') ?>">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php if($page=='gallery'){echo " active";}?>" href="<?php echo base_url('index.php/home/get_photos') ?>">Gallery</a>
+                <a class="nav-link <?php if($page=='gallery'){echo " active";}?>" href="<?php echo base_url('index.php/home/gallery') ?>">Gallery</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a class="dropdown-item" href="#">Pic Map</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Distribution Maps</a>
-                    <a class="dropdown-item" href="#">Sanctuary Maps</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/sanctuary_map') ?>">Sanctuary Map</a>
                 </div>
             </li>
         </ul>
