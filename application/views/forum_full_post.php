@@ -47,7 +47,7 @@
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
                         <p><?php echo $post['details']; ?></p>
-                        <img src="<?php echo $post['image']; ?>" class="img-fluid" alt="Image not available">
+                        <img src="<?php echo $post['image']; ?>" class="img-fluid" alt="" style="width: 300px; height: 200px;">
                     </td>
                 </tr>
                 </tbody>
