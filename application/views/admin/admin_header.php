@@ -70,10 +70,10 @@ if($this->session->userdata('admin_flag')!=1) {
                     Maps
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Pic Map</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/pic_map') ?>">Pic Map</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Distribution Maps</a>
-                    <a class="dropdown-item" href="#">Sanctuary Maps</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/distribution_map') ?>">Distribution Maps</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/sanctuary_map') ?>">Sanctuary Maps</a>
                 </div>
             </li>
         </ul>

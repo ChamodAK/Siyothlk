@@ -32,11 +32,6 @@ if(!$this->session->userdata('username')) {
                     <label> Upload an Image (Optional) </label><br>
                     <input type="file" class="" name="userfile">
                 </div>
-                <div class="form-check">
-                    <label class="form-check-labek">
-                        <input type="checkbox" class="form-check-input" id="checkbox" value="notification">Notify me upon replies.</input>
-                    </label>
-                </div>
                 <button type="submit" class="btn btn-primary">Create Post</button>
             </form>
             <?php echo form_close(); ?>

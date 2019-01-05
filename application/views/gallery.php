@@ -26,7 +26,7 @@
                         <ul class="navbar-nav">
 
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url('index.php/Gallery/add_image') ?>">Add photos</a>
+                                <a class="nav-link" href="<?php echo base_url('index.php/Gallery/add_image') ?>">Add Images</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url('index.php/Gallery/categories') ?>">Categories</a>

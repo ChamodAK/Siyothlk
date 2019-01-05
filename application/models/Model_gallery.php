@@ -15,7 +15,7 @@ class Model_gallery extends CI_Model
         return $data;
     }
 
-    public function bird_list(){
+    public function get_bird_names(){
         $data=array();
         $query= $this->db->query("SELECT comName FROM siyothlk.bird ;");
         if($query->num_rows()>0){
@@ -28,7 +28,7 @@ class Model_gallery extends CI_Model
 
     }
 
-    public function cat_list(){
+    public function get_bird_categories(){
         $data=array();
         $query= $this->db->query("SELECT id,name,details FROM siyothlk.category ;");
         if($query->num_rows()>0){

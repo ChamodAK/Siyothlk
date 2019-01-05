@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 
     <script src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js"></script>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
 
     <title> Siyoth.lk </title>
 
@@ -81,9 +82,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     Maps
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Pic Map</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/pic_map') ?>">Pic Map</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Distribution Maps</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/distribution_map') ?>">Distribution Maps</a>
                     <a class="dropdown-item" href="<?php echo base_url('index.php/home/sanctuary_map') ?>">Sanctuary Map</a>
                 </div>
             </li>
