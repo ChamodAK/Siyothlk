@@ -172,7 +172,11 @@ class Model_Bird_Wiki extends CI_Model {
 
         return $query->row(0);
     }
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> upstream/master
     public function advanced_search($size, $colour, $location) {
 
         $query = $this->db->query("SELECT bird.birdId, bird.comName, bird.sciName, bird.image FROM siyothlk.bird JOIN siyothlk.bird_colour ON bird.birdId = bird_colour.birdId JOIN siyothlk.bird_loc ON bird.birdId = bird_loc.birdId WHERE bird.size = '$size' AND bird_colour.colour = '$colour' AND bird_loc.location = '$location';");
@@ -338,7 +342,6 @@ class Model_Bird_Wiki extends CI_Model {
             return FALSE;
 
         }
-
     }
 
 
