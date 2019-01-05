@@ -85,7 +85,7 @@ class Home extends CI_Controller {
         $result['photos']=$this->Model_gallery->get_photo();
 
         if($result!=false){
-            $this->load->view('Gallery',$result);
+            $this->load->view('gallery',$result);
 
         }
     }

@@ -22,8 +22,6 @@
                 CKEDITOR.replace( 'editor' );
             </script>
 
-
-
         </div>
 
         <div class="form-group">
