@@ -19,7 +19,7 @@
         <div align="center">
             <h5 style="color: red; font-style: italic; padding-bottom: 10px; "> Distribution Map </h5>
             <div>
-                <?=$bird['disMapLink']?>
+                <iframe src="<?php echo $bird['disMapLink'] ?>" width="640" height="480"></iframe>
             </div>
         </div>
         <div class="text-center" style="margin-top: 10px; margin-bottom: 10px;">

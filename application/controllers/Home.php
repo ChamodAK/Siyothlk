@@ -139,11 +139,22 @@ class Home extends CI_Controller {
         $result['birds'] = $this->Model_Bird_Wiki->get_bird_list();
         $result['maps'] = $this->Model_Bird_Wiki->get_bird_map($id);
 
-
         $this->load->view('bird_map', $result);
     }
 
+    public function search() {
 
+        $this->load->model('Model_Search');
+        $result['result'] = $this->Model_Search->get_results();
+
+        if($result!=false) {
+            $this->load->view('search_result', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
 
 
 
