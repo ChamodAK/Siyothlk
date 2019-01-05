@@ -2,41 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6e52547-119b-4e41-a19b-b38e0b957551" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application/views/admin/add_bird_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/advanced_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/advanced_search_result.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/images/forum/667fd55f4dd7684689ec2c88b3014787.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/wiki/chicken.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/wiki/crow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/wiki/egret.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/wiki/myna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/wiki/peacock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/wiki/robin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Gallery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Wiki.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Wiki.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/models/Model_Bird_Wiki.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Model_Bird_Wiki.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Model_Events.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Model_Events.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Model_News_Articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Model_News_Articles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Model_User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Model_User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Model_Wiki.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Model_gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Model_Gallery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/add_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/add_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/add_event.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/add_event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/add_bird.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/admin_dash_add_news.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/admin_dash_add_news.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/admin_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/admin_header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/bird_edit.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/gallery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/wiki/northern_shoveler.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/asset/wiki/northern_shoveller.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gallery_images/download_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/640cc487d43712e0c51bd6ff3d0d334d.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,13 +76,13 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="jpg" value="2" />
-          <entry key="php" value="29" />
+          <entry key="php" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="2" />
-          <entry key="PHP" value="29" />
+          <entry key="PHP" value="30" />
         </counts>
       </usages-collector>
     </session>
@@ -147,7 +113,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/gallery.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -198,6 +164,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/models/Model_Bird_Wiki.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="338" column="9" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/admin/admin_header.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -212,20 +187,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="682">
               <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/add_image.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" selection-start-line="2" selection-end-line="8" selection-end-column="6" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -265,12 +226,12 @@
         <option value="$PROJECT_DIR$/application/views/advanced_search.php" />
         <option value="$PROJECT_DIR$/application/controllers/Wiki.php" />
         <option value="$PROJECT_DIR$/application/config/database.php" />
-        <option value="$PROJECT_DIR$/application/models/Model_Bird_Wiki.php" />
         <option value="$PROJECT_DIR$/application/views/add_image.php" />
         <option value="$PROJECT_DIR$/application/controllers/Gallery.php" />
         <option value="$PROJECT_DIR$/application/controllers/Home.php" />
         <option value="$PROJECT_DIR$/application/models/Model_Gallery.php" />
         <option value="$PROJECT_DIR$/application/views/gallery.php" />
+        <option value="$PROJECT_DIR$/application/models/Model_Bird_Wiki.php" />
       </list>
     </option>
   </component>
@@ -369,18 +330,18 @@
       <workItem from="1546312922707" duration="12868000" />
       <workItem from="1546403353712" duration="14592000" />
       <workItem from="1546483184069" duration="19929000" />
-      <workItem from="1546682444379" duration="16191000" />
+      <workItem from="1546682444379" duration="16386000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71550000" />
+    <option name="totallyTimeSpent" value="71745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" weight="0.16644295" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.16577181" />
       <window_info id="Structure" order="1" sideWeight="0.50120485" side_tool="true" weight="0.26824033" />
       <window_info id="Favorites" order="2" sideWeight="0.50120485" side_tool="true" weight="0.26824033" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -633,13 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Model_Bird_Wiki.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="187" column="341" selection-start-line="187" selection-start-column="341" selection-end-line="187" selection-end-column="341" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/forum_full_post.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -764,6 +718,13 @@
           <folding>
             <element signature="e#2550#2586#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Model_Bird_Wiki.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="338" column="9" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
         </state>
       </provider>
     </entry>
