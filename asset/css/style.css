@@ -28,7 +28,8 @@
 }
 
 .showcase .showcase-img {
-    min-height: 30rem;
+    min-height: 300px;
+    min-width: 300px;
     background-size: cover;
 }
 

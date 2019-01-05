@@ -22,7 +22,7 @@
     <section class="showcase" style="padding-top: 40px; padding-left: 40px;">
         <div class="container-fluid p-0">
             <div class="row no-gutters">
-                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url(<?=base_url('asset/home/king2.jpg')?>); border-radius: 50px;"></div>
+                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url(<?=base_url('asset/home/king2.jpg');?>); border-radius: 50px;"></div>
                 <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                     <h2 style="color: #004594">Get to know about latest news about world of birds...</h2>
                     <a href="<?=base_url('index.php/home/news_and_articles')?>" class="btn btn-outline-danger" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> See News & Articles </a>
