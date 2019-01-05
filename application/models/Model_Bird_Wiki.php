@@ -166,6 +166,11 @@ class Model_Bird_Wiki extends CI_Model {
 
     }
 
+    public function get_bird_map($id) {
+        $query = $this->db->query("SELECT  birdId , comName , disMapLink FROM bird WHERE birdId = $id");
+
+        return $query->row(0);
+      
     public function advanced_search($size, $colour, $location) {
 
         $query = $this->db->query("SELECT bird.birdId, bird.comName, bird.sciName, bird.image FROM siyothlk.bird JOIN siyothlk.bird_colour ON bird.birdId = bird_colour.birdId JOIN siyothlk.bird_loc ON bird.birdId = bird_loc.birdId WHERE bird.size = '$size' AND bird_colour.colour = '$colour' AND bird_loc.location = '$location';");
