@@ -205,5 +205,60 @@ class Admin extends CI_Controller {
 
     }
 
+    public function edit_news($id) {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->get_edit_news($id);
+
+        if($result!=false) {
+
+            $data['news'] = array(
+
+                'id' => $result->id,
+                'title' => $result->title,
+                'details' => $result->details
+
+            );
+
+            $this->load->view('admin/edit_news', $data);
+
+        }
+
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function submit_edit_news () {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->submit_edit_news();
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Edited News Submitted Successfully! </div>');
+            redirect('admin/news');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/news');
+        }
+
+    }
+
+    public function delete_news($id) {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->delete_news($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> News Deleted Successfully! </div>');
+            redirect('admin/news');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/news');
+        }
+
+    }
+
 
 }

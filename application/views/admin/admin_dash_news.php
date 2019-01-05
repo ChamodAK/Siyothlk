@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card">
 
-            <h4 class="card-header">News Published On Web Site <a href="<?php echo base_url('index.php/admin/add_news')?>" class="btn btn-danger btn-sm float-right"><i class="fas fa-plus"></i> New</a></h4>
+            <h4 class="card-header">News Published On Website <a href="<?php echo base_url('index.php/admin/add_news')?>" class="btn btn-danger btn-sm float-right"><i class="fas fa-plus"></i> New</a></h4>
 
             <?php
             if($this->session->flashdata('msg')) {
@@ -25,10 +25,10 @@
                 if(!empty($news)) {
                     foreach($news as $new) {
                         echo "<tr >";
-                            echo "<td >$new->id</td >";
-                            echo "<td >$new->title</td >";
-                            echo "<td >$new->timeStamp</td >";
-                            echo "<td ><a href = \"#\" ><i class=\"fas fa-edit\"></i></a > <a href = \"#\" ><i style=\"color: red;\" class=\"fas fa-trash\"></i></a ></td >";
+                        echo "<td >$new->id</td >";
+                        echo "<td >$new->title</td >";
+                        echo "<td >$new->timeStamp</td >";
+                        echo "<td ><a href = \"".base_url('index.php/admin/edit_news')."/$new->id\" ><i style='color: blue;' class=\"fas fa-edit\"></i></a > <a href = \"".base_url('index.php/admin/delete_news')."/$new->id\" ><i style='color: red;' class=\"fas fa-trash\"></i></a ></td >";
                         echo "</tr >";
                     }
                 }
