@@ -205,6 +205,7 @@ class Admin extends CI_Controller {
 
     }
 
+
     public function delete_topic($id) {
         $data['id'] = $id;
         $this->load->view('admin/admin_delete_topic' , $data);
@@ -218,13 +219,37 @@ class Admin extends CI_Controller {
         $this->load->model('Model_Admin');
         $result = $this->Model_Admin->delete_topic_confirm($id);
 
-        if($result) {
+        if ($result) {
             $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Topic Deleted Successfully! </div>');
             redirect('Home/forum');
-        }
-        else {
+        } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
             redirect('Home/forum');
+        }
+    }
+
+    public function edit_news($id) {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->get_edit_news($id);
+
+        if($result!=false) {
+
+            $data['news'] = array(
+
+                'id' => $result->id,
+                'title' => $result->title,
+                'details' => $result->details
+
+            );
+
+            $this->load->view('admin/edit_news', $data);
+
+        }
+
+        else {
+            echo "Something went wrong !";
+
         }
 
     }
@@ -240,16 +265,45 @@ class Admin extends CI_Controller {
     public function delete_reply_confirm($post_id , $reply_id) {
 
 
-        $this->load->model('Model_Admin');
-        $result = $this->Model_Admin->delete_reply_confirm($post_id , $reply_id);
+                $this->load->model('Model_Admin');
+                $result = $this->Model_Admin->delete_reply_confirm($post_id, $reply_id);
 
-        if($result) {
-            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Deleted Successfully! </div>');
-            redirect('Forum/full_post/'."$post_id");
+                if ($result) {
+                    $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Deleted Successfully! </div>');
+                    redirect('Forum/full_post/' . "$post_id");
+                } else {
+                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+                    redirect('Forum/full_post/' . "$post_id");
+                }
+            }
+
+    public function submit_edit_news () {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->submit_edit_news();
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Edited News Submitted Successfully! </div>');
+            redirect('admin/news');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/news');
         }
-        else {
-            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
-            redirect('Forum/full_post/'."$post_id");
+
+    }
+
+    public function delete_news($id) {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->delete_news($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> News Deleted Successfully! </div>');
+            redirect('admin/news');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/news');
+
         }
 
     }

@@ -106,5 +106,31 @@ class Model_News_Articles extends CI_Model{
 
     }
 
+    public function get_edit_news ($id) {
+
+        $query = $this->db->query("SELECT news.id, news.title, news.details FROM siyothlk.news WHERE news.id = $id;");
+        return $query->row(0);
+
+    }
+
+    public function submit_edit_news() {
+
+        $data = array(
+            'title' => $this->input->post('title'),
+            'details' => $this->input->post('details'),
+            'timeStamp' => date ('Y-m-d H:i:s')
+        );
+
+        $this->db->where('id', $this->input->post('id'));
+        return $this->db->update('news', $data);
+
+    }
+
+    public function delete_news($id) {
+
+        return $this->db->delete('news', array('id' => $id));
+
+    }
+
 
 }

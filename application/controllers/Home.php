@@ -75,7 +75,25 @@ class Home extends CI_Controller {
 
     public function my_profile() {
 
-	    $this->load->view('user/my_profile_main');
+        $id = $this->session->userdata('id');
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->get_my_profile($id);
+
+        if($result!=false) {
+
+            $data['profile'] = array(
+                'id' => $id,
+                'username' => $result->username,
+                'email' => $result->email
+            );
+
+            $this->load->view('user/my_profile_main', $data);
+
+        }
+        else {
+            echo "Something went wrong !";
+        }
 
     }
 
