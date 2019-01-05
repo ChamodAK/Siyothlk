@@ -205,5 +205,54 @@ class Admin extends CI_Controller {
 
     }
 
+    public function delete_topic($id) {
+        $data['id'] = $id;
+        $this->load->view('admin/admin_delete_topic' , $data);
+
+
+    }
+
+    public function delete_topic_confirm($id) {
+
+
+        $this->load->model('Model_Admin');
+        $result = $this->Model_Admin->delete_topic_confirm($id);
+
+        if($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Topic Deleted Successfully! </div>');
+            redirect('Home/forum');
+        }
+        else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Home/forum');
+        }
+
+    }
+
+    public function delete_reply($post_id , $reply_id) {
+        $data['post_id'] = $post_id;
+        $data['reply_id'] = $reply_id;
+        $this->load->view('admin/admin_delete_reply' , $data);
+
+
+    }
+
+    public function delete_reply_confirm($post_id , $reply_id) {
+
+
+        $this->load->model('Model_Admin');
+        $result = $this->Model_Admin->delete_reply_confirm($post_id , $reply_id);
+
+        if($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Deleted Successfully! </div>');
+            redirect('Forum/full_post/'."$post_id");
+        }
+        else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Forum/full_post/'."$post_id");
+        }
+
+    }
+
 
 }

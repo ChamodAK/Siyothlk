@@ -36,7 +36,7 @@
                         <div><a href="#"><?php echo $post['username']; ?></a></div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
-                        <div><span class="font-weight-bold">Post subject:</span><?php echo $post['title']; ?></div>
+<!--                        <div><span class="font-weight-bold">Post subject:</span>--><?php //echo $post['title']; ?><!--</div>-->
                         <div><span class="font-weight-bold">Posted:</span><?php echo $post['timeStamp']; ?></div>
                     </td>
                 </tr>
@@ -76,6 +76,9 @@
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
                         <div><span class="font-weight-bold">Posted:</span><?php echo $reply->date_posted; ?></div>
+                        <?php if ($this->session->userdata('username') == 'admin') { ?>
+                            <div class="text-right"><a href = "<?php echo base_url('index.php/Admin/delete_reply/').$post['id']."/"."$reply->reply_id";?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
+                        <?php }?>
                     </td>
                 </tr>
                 <tr>
