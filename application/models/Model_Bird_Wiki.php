@@ -166,6 +166,12 @@ class Model_Bird_Wiki extends CI_Model {
 
     }
 
+    public function get_bird_map($id) {
+        $query = $this->db->query("SELECT  birdId , comName , disMapLink FROM bird WHERE birdId = $id");
+
+        return $query->row(0);
+    }
+
 
 
 }

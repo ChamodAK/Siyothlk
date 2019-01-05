@@ -69,7 +69,39 @@ class Model_forum extends CI_Model {
             }
             return $data;
         }
+    }
 
+    public function count_topics() {
+        $query = $this->db->query("SELECT * FROM forum;");
+        return $query->num_rows();
+    }
+
+    public function count_users() {
+        $query = $this->db->query("SELECT * FROM user;");
+        return $query->num_rows();
+    }
+
+    public function sort_by_newest() {
+        $query = $this->db->query("SELECT forum.id, forum.title, forum.timeStamp, user.username FROM siyothlk.forum JOIN user on forum.userId = user.userId ORDER BY forum.timeStamp DESC;");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+    }
+
+    public function sort_by_oldest() {
+        $query = $this->db->query("SELECT forum.id, forum.title, forum.timeStamp, user.username FROM siyothlk.forum JOIN user on forum.userId = user.userId ORDER BY forum.timeStamp ASC;");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
 
     }
 }

@@ -42,12 +42,10 @@
                 </tr>
                 <tr>
                     <td class="author-col">
-                        <div><span class="font-weight-bold">Joined:</span> <br>01 jan 2019, 15:43</div>
-                        <div><span class="font-weight-bold">Posts:</span> <br>123</div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
                         <p><?php echo $post['details']; ?></p>
-                        <img src="<?php echo $post['image']; ?>" class="img-fluid" alt="Image not available">
+                        <img src="<?php echo $post['image']; ?>" class="img-fluid" alt="" style="width: 300px; height: 200px;">
                     </td>
                 </tr>
                 </tbody>
@@ -63,14 +61,15 @@
         <div class="col-11">
             <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top">Replies</h2>
             <table class="table table-striped table-bordered table-responsive-lg">
+            <?php if(!empty($replies)) { ?>
                 <thead class="thead-light">
                 <tr>
                     <th scope="col">Replied by</th>
                     <th scope="col">Reply</th>
                 </tr>
                 </thead>
+                <?php foreach ($replies as $reply) {?>
                 <tbody>
-                <?php if(!empty($replies)) { foreach ($replies as $reply) {?>
                 <tr>
                     <td class="author-col">
                         <div><a href="#"><?php echo $reply->username; ?></a></div>
@@ -81,36 +80,26 @@
                 </tr>
                 <tr>
                     <td class="author-col">
-                        <div><span class="font-weight-bold">Joined:</span> <br>01 jan 2019, 15:43</div>
-                        <div><span class="font-weight-bold">Posts:</span> <br>123</div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
                         <p><?php echo $reply->details; ?></p>
                     </td>
                 </tr>
                 <?php } }?>
+                <br>
+                <?php if(empty($replies)) {?>
+                    <h3>No any reply to this post</h3>
+                    <?php }?>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="mb-3 clearfix">
-        <nav aria-label="Navigate post pages" class="float-lg-right">
-            <ul class="pagination pagination-sm mb-lg-0">
-                <li class="page-item active"><a href="#" class="page-link">1 <span class="sr-only">(current)</span></a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link">&hellip;31</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next</a></li>
-            </ul>
-        </nav>
-    </div>
+    <br>
     <?php echo form_open('Forum/full_post/'.$post['id']); ?>
     <form class="mb-3" action="">
         <div class="form-group">
-            <label for="comment">Reply to this post:</label>
-            <textarea class="form-control" name="content" cols="30" rows="10" placeholder="Write your reply here." required><?php echo set_value('content'); ?></textarea>
+            <label for="comment" style="color: #5a0099"><b>Reply to this post:</b></label>
+            <textarea class="form-control" name="content" cols="20" rows="7" placeholder="Write your reply here." required><?php echo set_value('content'); ?></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Reply</button>
     </form>
