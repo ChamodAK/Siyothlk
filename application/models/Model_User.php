@@ -6,9 +6,9 @@ class Model_user extends CI_Model {
 
         $data = array(
 
-            'username' => $this->input->post('username', TRUE),
-            'password' => sha1($this->input->post('password', TRUE)),
-            'email' => $this->input->post('email', TRUE),
+            'username' => $this->input->post('username'),
+            'password' => sha1($this->input->post('password')),
+            'email' => $this->input->post('email'),
             'memberFlag' => 1
         );
 

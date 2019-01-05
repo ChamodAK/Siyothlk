@@ -22,8 +22,8 @@ class Model_Events extends CI_Model {
 
         $data = array(
 
-            'title' => $this->input->post('title', TRUE),
-            'details' => $this->input->post('content', TRUE),
+            'title' => $this->input->post('title'),
+            'details' => $this->input->post('content'),
             'timeStamp' => date ('Y-m-d H:i:s'),
             'image' => $data['image'],
             'userId' => $this->session->userdata('id')

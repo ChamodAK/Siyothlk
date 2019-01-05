@@ -54,4 +54,8 @@
 
     </div>
 
+    <script>
+        CKEDITOR.replace( 'content' );
+    </script>
+
 <?php include 'footer.php' ?>

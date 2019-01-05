@@ -53,14 +53,14 @@
                 <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url(<?=base_url('asset/home/gal.jpg')?>);border-radius: 50px;"></div>
                 <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                     <h2 style="color: #004594">Visit our gallery and witness the real beauty of world of birds...</h2>
-                    <a href="<?=base_url('index.php/home/get_photos')?>" class="btn btn-outline-danger" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> Visit Gallery </a>
+                    <a href="<?=base_url('index.php/home/gallery')?>" class="btn btn-outline-danger" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> Visit Gallery </a>
                 </div>
             </div>
             <div class="row no-gutters">
                 <div class="col-lg-6 text-white showcase-img" style="background-image: url(<?=base_url('asset/home/forum.jpg')?>);border-radius: 50px;"></div>
                 <div class="col-lg-6 my-auto showcase-text">
                     <h2 style="color: #004594">Have a Question? Ask it in our forum section and get the opinions od the birders and experts in our community</h2>
-                    <a href="<?=base_url()?>" class="btn btn-outline-danger" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> Visit Forum </a>
+                    <a href="<?php echo base_url('index.php/home/forum') ?>" class="btn btn-outline-danger" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> Visit Forum </a>
                 </div>
             </div>
         </div>

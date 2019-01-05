@@ -90,7 +90,9 @@ class Admin extends CI_Controller {
     }
 
     public function add_bird() {
-        $this->load->view('admin/add_bird');
+
+        $this->load->view('admin/add_bird_form', array('error' => ' '));
+
     }
 
     public function edit_bird() {
@@ -150,6 +152,56 @@ class Admin extends CI_Controller {
             redirect('Admin/wiki');
         }
 
+    }
+
+    public function add_new_bird() {
+
+        $this->form_validation->set_rules('comName', 'Common Name', 'trim|required');
+        $this->form_validation->set_rules('sciName', 'Scientific Name', 'trim|required|is_unique[bird.sciName]', array('is_unique' => 'Bird is already exists'));
+        $this->form_validation->set_rules('size', 'Bird Size', 'trim|required|max_length[2]');
+        $this->form_validation->set_rules('category', 'Category', 'trim|required|max_length[1]');
+        $this->form_validation->set_rules('colour1', 'Colour 01', 'trim|required');
+        $this->form_validation->set_rules('location1', 'Location 01', 'trim|required');
+        $this->form_validation->set_rules('map', 'Distribution Map', 'required');
+        $this->form_validation->set_rules('details', 'Bird Details', 'required');
+        $this->form_validation->set_rules('imgName', 'Image Name', 'trim|required|is_unique[bird.image]', array('is_unique' => 'Image name already exists'));
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->add_bird();
+        }
+        else
+        {
+
+
+            $config['upload_path'] = './asset/wiki';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['encrypt_name'] = FALSE;
+            $config['file_name'] = $this->input->post('imgName');
+            $this->load->library('upload', $config);
+
+            if ( !$this->upload->do_upload('image')) {
+
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('admin/add_bird_form', $error);
+
+            }
+            else {
+
+                $this->load->model('Model_Bird_Wiki');
+                $result = $this->Model_Bird_Wiki->add_new_bird();
+
+                if ($result) {
+                    $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> New Bird Added Successfully! </div>');
+                    redirect('admin/wiki');
+                } else {
+                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+                    redirect('admin/wiki');
+                }
+
+            }
+
+        }
 
     }
 
