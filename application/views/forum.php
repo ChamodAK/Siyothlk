@@ -58,12 +58,12 @@
                         <td>
                             <div><h6 style="color: red"><?php echo $post->username;?></h6></div>
                             <div><?php echo $post->timeStamp;?></div>
-                            <?php if ($this->session->userdata('username') == 'admin') { ?>
-                            <div class="text-right"><a href = "<?php echo base_url('index.php/Admin/delete_topic/').$post->id?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
-                            <?php } elseif ($this->session->userdata('username') == $post->username) {?>
-                            <div class="text-right"><a href = "<?php echo base_url('index.php/Admin/delete_topic/').$post->id?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
-                            <?php } ?>
-                            </td>
+                            <?php if($this->session->userdata('username') == 'admin'): ?>
+                                <div class="tect-right"><a href="<?=base_url('index.php/Admin/delete_topic/') . $post->id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
+                            <?php elseif($this->session->userdata('username') == $post->username): ?>
+                                <div class="tect-right"><a href="<?=base_url('index.php/User_Profile/delete_topic/') . $post->id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                     <?php } }?>
                 </tbody>
