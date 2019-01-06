@@ -21,4 +21,10 @@ class Model_Admin extends CI_Model {
 
     }
 
+    function delete_image_confirm($id) {
+
+        return $this->db->delete('image', array('imageId' => $id));
+
+    }
+
 }

@@ -101,6 +101,9 @@
                         <div class="caption">
                             <h3><?php echo $image->comName; ?></h3>
                             <p>Scientific Name:<?php echo $image->sciName; ?></p> <p>Other names:<?php echo $image->otherName; ?></p>
+                            <?php if ($this->session->userdata('username') == 'admin') { ?>
+                                <div class="text-right"><a href = "<?php echo base_url('index.php/Admin/delete_image/')."$image->imageId";?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
+                            <?php }?>
                         </div>
                     </div>
                 </div>

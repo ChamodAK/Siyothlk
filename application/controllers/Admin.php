@@ -308,5 +308,27 @@ class Admin extends CI_Controller {
 
     }
 
+    public function delete_image($id) {
+        $data['id'] = $id;
+        $this->load->view('admin/admin_delete_image' , $data);
+
+
+    }
+
+    public function delete_image_confirm($id) {
+
+
+        $this->load->model('Model_Admin');
+        $result = $this->Model_Admin->delete_image_confirm($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Image Deleted Successfully! </div>');
+            redirect('Home/gallery');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Home/gallery');
+        }
+    }
+
 
 }
