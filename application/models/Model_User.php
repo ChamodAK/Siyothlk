@@ -141,7 +141,7 @@ class Model_user extends CI_Model {
 
     }
 
-    function delete_image($id) {
+    function delete_image_confirm($id) {
 
         return $this->db->delete('image', array('imageId' => $id));
 

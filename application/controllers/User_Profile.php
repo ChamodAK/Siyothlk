@@ -182,23 +182,29 @@ class User_Profile extends CI_Controller {
     }
 
     public function delete_image($id) {
+        $data['id'] = $id;
+        $this->load->view('user/delete_image' , $data);
+    }
+
+    public function delete_image_confirm($id) {
+
 
         $this->load->model('Model_User');
-        $result = $this->Model_User->delete_image($id);
+        $result = $this->Model_User->delete_image_confirm($id);
 
         if ($result) {
             $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Image Deleted Successfully! </div>');
-            redirect('User_Profile/my_images');
+            redirect('Home/my_profile');
         } else {
-            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
-            redirect('User_Profile/my_images');
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Home/my_profile');
         }
-
     }
 
     public function delete_topic($id) {
         $data['id'] = $id;
-        $this->load->view('user_delete_topic' , $data);
+
+        $this->load->view('user/delete_forum_topic' , $data);
 
 
     }

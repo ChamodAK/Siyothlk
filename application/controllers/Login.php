@@ -58,7 +58,7 @@ class Login extends CI_Controller {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('member_flag');
         $this->session->unset_userdata('admin_flag');
-        $this->session->unset_userdata('loggedIn');
+        $this->session->unset_userdata('page_url');
 
         redirect('home/login');
 
