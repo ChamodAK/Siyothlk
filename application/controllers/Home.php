@@ -174,6 +174,20 @@ class Home extends CI_Controller {
 
     }
 
+    public function image_search() {
+
+        $this->load->model('Model_Search');
+        $result['images'] = $this->Model_Search->get_image_result();
+
+        if($result) {
+            $this->load->view('search_image_result', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
 
 
 }

@@ -87,7 +87,7 @@
 
         <h1>Siyoth.lk Gallery</h1>
 
-        <p class="page-description text-center">Clean Layout With Minimal Styles</p>
+        <p class="page-description text-center">A bird does not sing because it has an answer.  It sings because it has a song.  </p>
 
         <div class="tz-gallery">
 

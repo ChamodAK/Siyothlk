@@ -89,10 +89,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
         </ul>
 
+        <?php if (($page == 'gallery') or ($page == 'search_image_result')) {?>
+            <form class="form-inline my-2 my-lg-0" action="<?=base_url('index.php/home/image_search')?>" method="post">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        <?php }?>
+
+        <?php if (!(($page == 'gallery') or ($page == 'search_image_result'))) {?>
         <form class="form-inline my-2 my-lg-0" action="<?=base_url('index.php/home/search')?>" method="post">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <?php }?>
 
 
         <ul class="navbar-nav navbar-right mr-auto">
