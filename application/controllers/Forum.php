@@ -42,8 +42,10 @@ class Forum extends CI_Controller {
 
         if ($this->input->post('content')) {
             if(!$this->session->userdata('username')) {
+                $this->session->set_userdata('page_url',  current_url());
                 redirect('Home/login');
             }
+
             echo $post_id;
 
             $result2 = $this->Model_Forum->add_new_reply($post_id);

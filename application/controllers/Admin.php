@@ -205,6 +205,29 @@ class Admin extends CI_Controller {
 
     }
 
+
+    public function delete_topic($id) {
+        $data['id'] = $id;
+        $this->load->view('admin/admin_delete_topic' , $data);
+
+
+    }
+
+    public function delete_topic_confirm($id) {
+
+
+        $this->load->model('Model_Admin');
+        $result = $this->Model_Admin->delete_topic_confirm($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Topic Deleted Successfully! </div>');
+            redirect('Home/forum');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Home/forum');
+        }
+    }
+
     public function edit_news($id) {
 
         $this->load->model('Model_News_Articles');
@@ -226,9 +249,33 @@ class Admin extends CI_Controller {
 
         else {
             echo "Something went wrong !";
+
         }
 
     }
+
+    public function delete_reply($post_id , $reply_id) {
+        $data['post_id'] = $post_id;
+        $data['reply_id'] = $reply_id;
+        $this->load->view('admin/admin_delete_reply' , $data);
+
+
+    }
+
+    public function delete_reply_confirm($post_id , $reply_id) {
+
+
+                $this->load->model('Model_Admin');
+                $result = $this->Model_Admin->delete_reply_confirm($post_id, $reply_id);
+
+                if ($result) {
+                    $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Deleted Successfully! </div>');
+                    redirect('Forum/full_post/' . "$post_id");
+                } else {
+                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+                    redirect('Forum/full_post/' . "$post_id");
+                }
+            }
 
     public function submit_edit_news () {
 
@@ -256,8 +303,31 @@ class Admin extends CI_Controller {
         } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
             redirect('admin/news');
+
         }
 
+    }
+
+    public function delete_image($id) {
+        $data['id'] = $id;
+        $this->load->view('admin/admin_delete_image' , $data);
+
+
+    }
+
+    public function delete_image_confirm($id) {
+
+
+        $this->load->model('Model_Admin');
+        $result = $this->Model_Admin->delete_image_confirm($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Image Deleted Successfully! </div>');
+            redirect('Home/gallery');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Home/gallery');
+        }
     }
 
 

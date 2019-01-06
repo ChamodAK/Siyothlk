@@ -89,4 +89,20 @@ class Model_Search extends CI_Model {
 
     }
 
+    public function get_image_result()
+    {
+
+        $key = $this->input->post('search');
+
+        $query = $this->db->query("SELECT * FROM image JOIN bird ON image.bird_id = bird.birdId WHERE bird.comName LIKE '%$key%' OR bird.sciName LIKE '%$key%' OR bird.otherName LIKE '%$key%' ORDER BY image.timeStamp DESC  ;");
+
+        if($query->num_rows()>0 ){
+            foreach($query->result() as $row){
+                $data[]=$row;
+            }
+            return $data;
+        }
+
+    }
+
 }

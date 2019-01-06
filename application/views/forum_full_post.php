@@ -3,6 +3,7 @@
 <style type="text/css">
     .post-col{
         min-width: 20em;
+        max-width: 47em;
     }
 
     .author-col{
@@ -36,7 +37,7 @@
                         <div><a href="#"><?php echo $post['username']; ?></a></div>
                     </td>
                     <td class="post-col d-lg-flex justify-content-lg-between">
-                        <div><span class="font-weight-bold">Post subject:</span><?php echo $post['title']; ?></div>
+<!--                        <div><span class="font-weight-bold">Post subject:</span>--><?php //echo $post['title']; ?><!--</div>-->
                         <div><span class="font-weight-bold">Posted:</span><?php echo $post['timeStamp']; ?></div>
                     </td>
                 </tr>
@@ -60,38 +61,44 @@
         ?>
         <div class="col-11">
             <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top">Replies</h2>
-            <table class="table table-striped table-bordered table-responsive-lg">
-            <?php if(!empty($replies)) { ?>
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col">Replied by</th>
-                    <th scope="col">Reply</th>
-                </tr>
-                </thead>
-                <?php foreach ($replies as $reply) {?>
-                <tbody>
-                <tr>
-                    <td class="author-col">
-                        <div><a href="#"><?php echo $reply->username; ?></a></div>
-                    </td>
-                    <td class="post-col d-lg-flex justify-content-lg-between">
-                        <div><span class="font-weight-bold">Posted:</span><?php echo $reply->date_posted; ?></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="author-col">
-                    </td>
-                    <td class="post-col d-lg-flex justify-content-lg-between">
-                        <p><?php echo $reply->details; ?></p>
-                    </td>
-                </tr>
-                <?php } }?>
-                <br>
-                <?php if(empty($replies)) {?>
-                    <h3>No any reply to this post</h3>
+            <div class="container">
+                <table class="table table-striped table-bordered table-responsive-lg" style="max-width: 100px">
+                    <?php if(!empty($replies)) { ?>
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Replied by</th>
+                        <th scope="col">Reply</th>
+                    </tr>
+                    </thead>
+                    <?php foreach ($replies as $reply) {?>
+                    <tbody>
+                    <tr>
+                        <td class="author-col">
+                            <div><a href="#"><?php echo $reply->username; ?></a></div>
+                        </td>
+                        <td class="post-col d-lg-flex justify-content-lg-between">
+                            <div><span class="font-weight-bold">Posted:</span><?php echo $reply->date_posted; ?></div>
+                            <?php if ($this->session->userdata('username') == 'admin') { ?>
+                                <div class="text-right"><a href = "<?php echo base_url('index.php/Admin/delete_reply/').$post['id']."/"."$reply->reply_id";?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
+                            <?php }?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="author-col">
+                        </td>
+                        <td class="post-col d-lg-flex justify-content-lg-between">
+                            <p><?php echo $reply->details; ?></p>
+                        </td>
+                    </tr>
+                    <?php } }?>
+                    <br>
+                    <?php if(empty($replies)) {?>
+                        <h3>No any reply to this post</h3>
                     <?php }?>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
     <br>

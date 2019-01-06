@@ -1,5 +1,12 @@
 <?php $page = 'add_image'; include 'header.php';?>
 
+<?php
+if(!$this->session->userdata('username')) {
+    $this->session->set_userdata('page_url',  current_url());
+    redirect('Home/login');
+}
+?>
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home'); ?>"> Home </a></li>

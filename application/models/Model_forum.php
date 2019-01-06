@@ -61,7 +61,7 @@ class Model_forum extends CI_Model {
 
     public function get_replies($post_id) {
 
-        $query = $this->db->query("SELECT forum_reply.details, forum_reply.date_posted, user.username FROM siyothlk.forum_reply JOIN user on forum_reply.user_id = user.userId where forum_reply.forum_id = $post_id ORDER BY forum_reply.date_posted DESC;");
+        $query = $this->db->query("SELECT forum_reply.reply_id, forum_reply.details, forum_reply.date_posted, user.username FROM siyothlk.forum_reply JOIN user on forum_reply.user_id = user.userId where forum_reply.forum_id = $post_id ORDER BY forum_reply.date_posted DESC;");
 
         if($query->num_rows()>0) {
             foreach ($query->result() as $row) {
