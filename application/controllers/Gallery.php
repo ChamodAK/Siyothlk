@@ -22,7 +22,7 @@ class Gallery extends CI_Controller
         $this->load->model('Model_Bird_Wiki');
         $data['birds'] = $this->Model_Bird_Wiki->get_bird_list();
 
-        $this->form_validation->set_rules('content', 'Image Content', 'required');
+        $this->form_validation->set_rules('birdname', 'Bird Name', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {

@@ -34,11 +34,6 @@ if(!$this->session->userdata('username')) {
     </div>
 
     <div class="form-group">
-        <label> Image description </label>
-        <textarea class="form-control" rows="3" placeholder="Enter details" name="content"><?php echo set_value('content'); ?></textarea>
-    </div>
-
-    <div class="form-group">
         <label> Upload your Image </label><br>
         <input type="file" class="" name="userfile">
     </div>

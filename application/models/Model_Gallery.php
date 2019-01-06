@@ -50,7 +50,6 @@ class Model_gallery extends CI_Model
         $data = array(
 
             'bird_id' => $birdId,
-            'description' => $this->input->post('content'),
             'timeStamp' => date ('Y-m-d H:i:s'),
             'link' => $image_data['image'],
             'userId' => $this->session->userdata('id')
