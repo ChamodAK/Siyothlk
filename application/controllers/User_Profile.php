@@ -198,7 +198,7 @@ class User_Profile extends CI_Controller {
 
     public function delete_topic($id) {
         $data['id'] = $id;
-        $this->load->view('User_Profile/delete_forum_topic' , $data);
+        $this->load->view('user_delete_topic' , $data);
 
 
     }
