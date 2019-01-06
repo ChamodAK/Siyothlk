@@ -1,4 +1,4 @@
-<?php $page = 'delete_forum'; include 'header.php'; ?>
+<?php $page = 'delete_user_forum'; include 'header.php'; ?>
 
     <div class="col-md-9">
         <div class="card">

@@ -4,6 +4,15 @@
 
     <div class="container col-md-7" align="justify" style="padding-left: 100px;">
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home'); ?>"> Home </a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home/bird_wiki'); ?>"> Bird Wiki </a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/Wiki/categories'); ?>"> Bird Categories </a></li>
+                <li class="breadcrumb-item active" aria-current="page"> <?php echo $category[0]->name; ?> </li>
+            </ol>
+        </nav>
+
         <h3 class="text-center" style="padding-top: 40px;"> <?php echo $category[0]->name; ?> </h3>
 
         <div class="text-center">

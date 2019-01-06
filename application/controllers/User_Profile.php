@@ -182,24 +182,39 @@ class User_Profile extends CI_Controller {
     }
 
     public function delete_image($id) {
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->delete_image($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Image Deleted Successfully! </div>');
+            redirect('User_Profile/my_images');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('User_Profile/my_images');
+        }
+
+    }
+
+    public function delete_topic($id) {
         $data['id'] = $id;
-        $this->load->view('user/delete_image' , $data);
+        $this->load->view('User_Profile/delete_forum_topic' , $data);
 
 
     }
 
-    public function delete_image_confirm($id) {
+    public function delete_topic_confirm($id) {
 
 
         $this->load->model('Model_User');
-        $result = $this->Model_User->delete_image_confirm($id);
+        $result = $this->Model_User->delete_topic_confirm($id);
 
         if ($result) {
-            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Image Deleted Successfully! </div>');
-            redirect('Home/my_profile');
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Topic Deleted Successfully! </div>');
+            redirect('Home/forum');
         } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
-            redirect('Home/my_profile');
+            redirect('Home/forum');
         }
     }
 

@@ -4,6 +4,15 @@
 
     <div class="main container">
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home'); ?>"> Home </a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home/bird_wiki'); ?>"> Bird Wiki </a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/Wiki/categories'); ?>"> Bird Categories </a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Advanced Search </li>
+            </ol>
+        </nav>
+
         <?php
         if($this->session->flashdata('msg')) {
             echo $this->session->flashdata('msg');

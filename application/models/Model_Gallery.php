@@ -41,23 +41,27 @@ class Model_gallery extends CI_Model
 
     }
 
-    public function add_new_image($image_data){
+    public function add_new_image(){
 
         $birdname = $this->input->post('birdname');
-        $query = $this->db->query("SELECT birdId FROM bird WHERE comName = '$birdname'");
-        $birdId = $query->row()->birdId;
+        $content = $this->input->post('content');
+        $lat = $this->input->get('lat');
+        $lng = $this->input->get('lng');
+
 
         $data = array(
 
-            'bird_id' => $birdId,
-            'description' => $this->input->post('content'),
-            'timeStamp' => date ('Y-m-d H:i:s'),
-            'link' => $image_data['image'],
-            'userId' => $this->session->userdata('id')
+            'image_name' => $birdname,
+            'content' => $this->input->post('content'),
+            'lat' => $lat,
+            'lng' => $lng
+            //'timeStamp' => date ('Y-m-d H:i:s'),
+            //'link' => $image_data['image'],
+            //'userId' => $this->session->userdata('id')
 
         );
 
-        return $this->db->insert('image', $data);
+        return $this->db->insert('map_image', $data);
     }
 
 

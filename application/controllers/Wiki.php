@@ -41,7 +41,8 @@ class Wiki extends CI_Controller{
             $data['bird'] = array(
 
                 'birdId' => $result->birdId,
-                'details' => $result->details
+                'details' => $result->details,
+                'comName' => $result->comName
 
             );
 
