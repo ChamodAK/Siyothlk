@@ -113,6 +113,13 @@ class Model_News_Articles extends CI_Model{
 
     }
 
+    public function get_edit_article ($id) {
+
+        $query = $this->db->query("SELECT article.id, article.title, article.details FROM siyothlk.article WHERE article.id = $id;");
+        return $query->row(0);
+
+    }
+
     public function submit_edit_news() {
 
         $data = array(
@@ -123,6 +130,19 @@ class Model_News_Articles extends CI_Model{
 
         $this->db->where('id', $this->input->post('id'));
         return $this->db->update('news', $data);
+
+    }
+
+    public function submit_edit_article() {
+
+        $data = array(
+            'title' => $this->input->post('title'),
+            'details' => $this->input->post('details'),
+            'timeStamp' => date ('Y-m-d H:i:s')
+        );
+
+        $this->db->where('id', $this->input->post('id'));
+        return $this->db->update('article', $data);
 
     }
 

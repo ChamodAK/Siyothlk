@@ -42,4 +42,30 @@ class Model_Events extends CI_Model {
 
     }
 
+    public function get_edit_event ($id) {
+
+        $query = $this->db->query("SELECT event.id, event.title, event.details FROM siyothlk.event WHERE event.id = $id;");
+        return $query->row(0);
+
+    }
+
+    public function submit_edit_event() {
+
+        $data = array(
+            'title' => $this->input->post('title'),
+            'details' => $this->input->post('details'),
+            'timeStamp' => date ('Y-m-d H:i:s')
+        );
+
+        $this->db->where('id', $this->input->post('id'));
+        return $this->db->update('event', $data);
+
+    }
+
+    public function delete_event($id) {
+
+        return $this->db->delete('event', array('id' => $id));
+
+    }
+
 }

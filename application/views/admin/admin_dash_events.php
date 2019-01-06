@@ -1,9 +1,9 @@
-<?php $panel = 'articles'; include 'admin_dashboard_frame.php'; ?>
+<?php $panel = 'events'; include 'admin_dashboard_frame.php'; ?>
 
     <div class="card">
         <div class="card">
 
-            <h4 class="card-header">Articles Published On Website</h4>
+            <h4 class="card-header">Events Published On Website</h4>
 
             <?php
             if($this->session->flashdata('msg')) {
@@ -22,13 +22,13 @@
                 </tr>
                 </thead>
                 <?php
-                if(!empty($articles)) {
-                    foreach($articles as $article) {
+                if(!empty($events)) {
+                    foreach($events as $event) {
                         echo "<tr >";
-                        echo "<td >$article->id</td >";
-                        echo "<td >$article->title</td >";
-                        echo "<td >$article->timeStamp</td >";
-                        echo "<td ><a href = \"".base_url('index.php/admin/edit_article')."/$article->id\" ><i style='color: blue;' class=\"fas fa-edit\"></i></a > <a href = \"".base_url('index.php/admin/delete_article')."/$article->id\" ><i style='color: red;' class=\"fas fa-trash\"></i></a ></td >";
+                        echo "<td >$event->id</td >";
+                        echo "<td >$event->title</td >";
+                        echo "<td >$event->timeStamp</td >";
+                        echo "<td ><a href = \"".base_url('index.php/admin/edit_event')."/$event->id\" ><i style='color: blue;' class=\"fas fa-edit\"></i></a > <a href = \"".base_url('index.php/admin/delete_event')."/$event->id\" ><i style='color: red;' class=\"fas fa-trash\"></i></a ></td >";
                         echo "</tr >";
                     }
                 }

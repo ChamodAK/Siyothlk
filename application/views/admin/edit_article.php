@@ -1,8 +1,9 @@
-<?php $panel = "my_articles"; include 'my_profile_frame.php' ?>
+<?php $panel = 'articles'; include 'admin_dashboard_frame.php'; ?>
 
-    <div class="col-md-9">
+    <div class="card">
         <div class="card">
-            <h4 class="card-header">My Articles/Edit Article</h4>
+
+            <h4 class="card-header">Article/Edit Article</h4>
             <div class="card-body">
 
                 <?php
@@ -13,7 +14,7 @@
 
                 <div class="container">
 
-                    <?php echo form_open_multipart('user_profile/submit_edit_Article'); ?>
+                    <?php echo form_open_multipart('admin/submit_edit_article'); ?>
 
                     <div class="form-group">
                         <label> Edit Title </label>
@@ -37,7 +38,8 @@
                 </script>
 
             </div>
+
         </div>
     </div>
 
-<?php include 'my_profile_footer.php' ?>
+<?php include 'admin_dashboard_foot.php'; ?>
