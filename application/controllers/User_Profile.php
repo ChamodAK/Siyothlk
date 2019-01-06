@@ -167,4 +167,40 @@ class User_Profile extends CI_Controller {
 
     }
 
+    public function my_images() {
+
+        $this->load->model('Model_User');
+        $result['images'] = $this->Model_User->my_images();
+
+        if($result!=false) {
+            $this->load->view('user/my_images', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function delete_image($id) {
+        $data['id'] = $id;
+        $this->load->view('user/delete_image' , $data);
+
+
+    }
+
+    public function delete_image_confirm($id) {
+
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->delete_image_confirm($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Image Deleted Successfully! </div>');
+            redirect('Home/my_profile');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Home/my_profile');
+        }
+    }
+
 }

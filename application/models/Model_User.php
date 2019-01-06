@@ -126,5 +126,26 @@ class Model_user extends CI_Model {
 
     }
 
+    public function my_images() {
+
+        $id = $this->session->userdata('id');
+
+        $query = $this->db->query("SELECT image.imageId , image.link , bird.comName , bird.otherName , bird.sciName FROM image JOIN user ON image.userId = user.userId JOIN bird ON image.bird_id = bird.birdId WHERE image.userId = '$id';");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+    }
+
+    function delete_image_confirm($id) {
+
+        return $this->db->delete('image', array('imageId' => $id));
+
+    }
+
 
 }
