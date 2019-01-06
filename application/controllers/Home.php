@@ -139,10 +139,6 @@ class Home extends CI_Controller {
 	    $this->load->view('map_sanctuary');
     }
 
-//    public function pic_map() {
-//	    $this->load->view('pic_map');
-//    }
-
     public function distribution_map() {
         $this->load->model('Model_Bird_Wiki');
         $result['birds'] = $this->Model_Bird_Wiki->get_bird_list();

@@ -3,6 +3,13 @@
     <?php include "sidebar.php"; ?>
 
     <div class="main container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home'); ?>"> Home </a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home/bird_wiki'); ?>"> Bird Wiki </a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Bird Categories </li>
+            </ol>
+        </nav>
 
         <div class="row">
             <div class="col-lg-12" style="margin: 10px 10px;">

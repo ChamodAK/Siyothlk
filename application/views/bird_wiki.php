@@ -20,6 +20,13 @@
         </div>
     </header>
 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home'); ?>"> Home </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Bird Wiki </li>
+        </ol>
+    </nav>
+
     <div class="container">
 
         <div class="row">

@@ -24,7 +24,7 @@ class Model_Bird_Wiki extends CI_Model {
 
     public function get_edit_bird ($birdId) {
 
-        $query = $this->db->query("SELECT bird.birdId, bird.details FROM siyothlk.bird WHERE bird.birdId = $birdId;");
+        $query = $this->db->query("SELECT  bird.comName , bird.birdId, bird.details FROM siyothlk.bird WHERE bird.birdId = $birdId;");
         return $query->row(0);
 
     }
