@@ -58,6 +58,10 @@ class Model_gallery extends CI_Model
             //'timeStamp' => date ('Y-m-d H:i:s'),
             //'link' => $image_data['image'],
             //'userId' => $this->session->userdata('id')
+//            'bird_id' => $birdId,
+//            'timeStamp' => date ('Y-m-d H:i:s'),
+//            'link' => $image_data['image'],
+//            'userId' => $this->session->userdata('id')
 
         );
 
