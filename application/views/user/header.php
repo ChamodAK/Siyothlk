@@ -19,11 +19,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 
+    <script src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js"></script>
+
     <title> Siyoth.lk </title>
 
 </head>
 
-<body>
+<body id="<?php echo $page; ?>">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="<?php echo base_url('index.php/home'); ?>">
@@ -37,7 +39,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='home'){echo " active";}?>" href="<?php echo base_url('index.php/home'); ?>">Home <span class="sr-only">(current)</span></a>
+                <?php
+                if($this->session->userdata('admin_flag')==1) {
+                    if($page=='dashboard') {
+                        echo "<a class=\"nav-link active\" href=\"" . base_url('index.php/home/dashboard') . "\"> Dashboard <span class=\"sr-only\"></span></a>";
+                    }
+                    else {
+                        echo "<a class=\"nav-link\" href=\"" . base_url('index.php/home/dashboard') . "\"> Dashboard <span class=\"sr-only\"></span></a>";
+                    }
+                }
+                else {
+                    if($page=='home') {
+                        echo "<a class=\"nav-link active\" href=\"" . base_url('index.php/home') . "\"> Home <span class=\"sr-only\"></span></a>";
+                    }
+                    else {
+                        echo "<a class=\"nav-link\" href=\"" . base_url('index.php/home') . "\"> Home <span class=\"sr-only\"></span></a>";
+                    }
+                }
+                ?>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if($page=='bird_wiki'){echo " active";}?>" href="<?php echo base_url('index.php/home/bird_wiki') ?>">Bird WiKi</a>
@@ -46,30 +65,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link <?php if($page=='news_articles'){echo " active";}?>" href="<?php echo base_url('index.php/home/news_and_articles') ?>">News & Articles</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='forum'){echo " active";}?>" href="#">Forum</a>
+                <a class="nav-link <?php if($page=='forum'){echo " active";}?>" href="<?php echo base_url('index.php/home/forum') ?>">Forum</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if($page=='events'){echo " active";}?>" href="<?php echo base_url('index.php/home/events') ?>">Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($page=='sanctuaries'){echo " active";}?>" href="#">Sanctuaries</a>
+                <a class="nav-link <?php if($page=='sanctuaries'){echo " active";}?>" href="<?php echo base_url('index.php/home/sanctuary') ?>">Sanctuaries</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php if($page=='gallery'){echo " active";}?>" href="<?php echo base_url('index.php/home/gallery') ?>">Gallery</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Maps
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Pic Map</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/pic_map') ?>">Pic Map</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Distribution Maps</a>
-                    <a class="dropdown-item" href="#">Sanctuary Maps</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/distribution_map') ?>">Distribution Maps</a>
+                    <a class="dropdown-item" href="<?php echo base_url('index.php/home/sanctuary_map') ?>">Sanctuary Map</a>
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+
+        <?php if (($page == 'gallery') or ($page == 'search_image_result')) {?>
+            <form class="form-inline my-2 my-lg-0" action="<?=base_url('index.php/home/image_search')?>" method="post">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        <?php }?>
+
+        <?php if (!(($page == 'gallery') or ($page == 'search_image_result'))) {?>
+            <form class="form-inline my-2 my-lg-0" action="<?=base_url('index.php/home/search')?>" method="post">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        <?php }?>
+
 
         <ul class="navbar-nav navbar-right mr-auto">
             <li class="nav-item">
@@ -83,19 +116,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
             </li>
             <?php
-                if($this->session->userdata('username')) {
-                    echo "<li class=\"nav-item dropdown\">";
-                        echo "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n";
-                                echo $this->session->userdata('username');
-                        echo "</a>\n";
-                        echo "<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n";
-                            echo "<a class=\"dropdown-item\" href=\"" . base_url('index.php/home/my_profile');
-                            echo "\">My Profile</a>\n";
-                            echo "<a class=\"dropdown-item\" href=\"" . base_url('index.php/login/user_logout');
-                            echo "\">Logout</a>\n";
-                       echo " </div>";
-                    echo "</li>";
-                }
+            if($this->session->userdata('username')) {
+                echo "<li class=\"nav-item dropdown\">";
+                echo "<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n";
+                echo $this->session->userdata('username');
+                echo "</a>\n";
+                echo "<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n";
+                echo "<a class=\"dropdown-item\" href=\"" . base_url('index.php/home/my_profile');
+                echo "\">My Profile</a>\n";
+                echo "<a class=\"dropdown-item\" href=\"" . base_url('index.php/login/user_logout');
+                echo "\">Logout</a>\n";
+                echo " </div>";
+                echo "</li>";
+            }
             ?>
         </ul>
     </div>
