@@ -7,14 +7,14 @@
     }
     ?>
 
-<!--    <nav aria-label="breadcrumb">-->
-<!--        <ol class="breadcrumb">-->
-<!--            <li class="breadcrumb-item"><a href="--><?php //echo base_url('index.php/home'); ?><!--"> Home </a></li>-->
-<!--            <li class="breadcrumb-item"><a href="--><?php //echo base_url('index.php/home/news_and_articles') ?><!--"> News & Articles </a></li>-->
-<!--            <li class="breadcrumb-item"><a href="--><?php //echo base_url('index.php/News_Articles/articles') ?><!--"> Articles </a></li>-->
-<!--            <li class="breadcrumb-item active" aria-current="page"> Add New Article </li>-->
-<!--        </ol>-->
-<!--    </nav>-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home'); ?>"> Home </a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/home/bird_wiki'); ?>"> Bird Wiki </a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('index.php/Wiki/get_full_bird/'); ?><?php echo $bird['birdId']; ?>"> <?php echo $bird['comName']; ?> </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Edit Bird Details </li>
+        </ol>
+    </nav>
 
     <div class="container">
 
