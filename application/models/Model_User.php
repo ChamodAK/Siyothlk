@@ -218,5 +218,25 @@ class Model_user extends CI_Model {
       
     }
 
+    public function get_edit_topic ($id) {
+
+        $query = $this->db->query("SELECT forum.id, forum.title, forum.details FROM siyothlk.forum WHERE forum.id = $id;");
+        return $query->row(0);
+
+    }
+
+    public function submit_edit_topic() {
+
+        $data = array(
+            'title' => $this->input->post('title'),
+            'details' => $this->input->post('details'),
+            'timeStamp' => date ('Y-m-d H:i:s')
+        );
+
+        $this->db->where('id', $this->input->post('id'));
+        return $this->db->update('forum', $data);
+
+    }
+
 
 }
