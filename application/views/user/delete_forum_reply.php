@@ -10,7 +10,7 @@
                 <div>
                     <div style="display: inline">
                         <a href="<?=base_url('index.php/User_Profile/delete_reply_confirm/')."$post_id/"."$reply_id"?>" class="btn btn-primary"> Yes </a>
-                        <a href="<?=base_url('index.php/forum/full_forum/')."$post_id"?>" class="btn btn-danger"> No </a>
+                        <a href="<?=base_url('index.php/forum/full_post/')."$post_id"?>" class="btn btn-danger"> No </a>
                     </div>
                 </div>
 
