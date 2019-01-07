@@ -224,4 +224,27 @@ class User_Profile extends CI_Controller {
         }
     }
 
+    public function delete_reply($post_id , $reply_id) {
+        $data['post_id'] = $post_id;
+        $data['reply_id'] = $reply_id;
+        $this->load->view('user/delete_forum_reply' , $data);
+
+
+    }
+
+    public function delete_reply_confirm($post_id , $reply_id) {
+
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->delete_reply_confirm($post_id, $reply_id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Deleted Successfully! </div>');
+            redirect('Forum/full_post/' . "$post_id");
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Forum/full_post/' . "$post_id");
+        }
+    }
+
 }

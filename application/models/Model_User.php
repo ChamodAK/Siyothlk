@@ -153,5 +153,12 @@ class Model_user extends CI_Model {
 
     }
 
+    function delete_reply_confirm($post_id , $reply_id) {
+
+        $ids = array('reply_id' => $reply_id , 'forum_id' => $post_id);
+        return $this->db->delete('forum_reply' , $ids);
+
+    }
+
 
 }

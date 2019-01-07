@@ -78,11 +78,12 @@
                         </td>
                         <td class="post-col d-lg-flex justify-content-lg-between">
                             <div><span class="font-weight-bold">Posted:</span><?php echo $reply->date_posted; ?></div>
-                            <?php if ($this->session->userdata('username') == 'admin') { ?>
-                                <div class="text-right"><a href = "<?php echo base_url('index.php/Admin/delete_reply/').$post['id']."/"."$reply->reply_id";?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
-                            <?php } elseif ($this->session->userdata('username') == $reply->username) {?>
-                                <div class="text-right"><a href = "<?php echo base_url('index.php/Admin/delete_reply/').$post['id']."/"."$reply->reply_id";?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
-                            <?php } ?>
+                            <?php if($this->session->userdata('username') == 'admin'): ?>
+                                <div class="tect-right"><a href="<?=base_url('index.php/Admin/delete_reply/') . $post['id'] . "/" . $reply->reply_id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
+                            <?php elseif($this->session->userdata('username') == $reply->username): ?>
+                                <div class="tect-right"><a href="<?=base_url('index.php/User_Profile/delete_reply/') . $post['id'] . "/" . $reply->reply_id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
+                            <?php endif; ?>
+
                         </td>
                     </tr>
                     <tr>
