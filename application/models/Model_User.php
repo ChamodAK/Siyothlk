@@ -182,7 +182,7 @@ class Model_user extends CI_Model {
 
     }
 
-    function delete_image($id) {
+    function delete_image_confirm($id) {
 
         return $this->db->delete('image', array('imageId' => $id));
 
@@ -194,6 +194,11 @@ class Model_user extends CI_Model {
 
     }
 
+    function delete_reply_confirm($post_id , $reply_id) {
+
+        $ids = array('reply_id' => $reply_id , 'forum_id' => $post_id);
+        return $this->db->delete('forum_reply' , $ids);
+      
     public function get_users() {
 
         $query = $this->db->query("SELECT user.userId, user.username, user.email FROM siyothlk.user WHERE memberFlag = 1;");
@@ -208,9 +213,9 @@ class Model_user extends CI_Model {
     }
 
     function delete_user($id) {
-
+      
         return $this->db->delete('user', array('userId' => $id));
-
+      
     }
 
 

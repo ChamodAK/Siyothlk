@@ -20,7 +20,7 @@
                                 </a>
                                 <div class="caption">
                                     <h5 style="alignment: center"><?php echo $image->comName; ?></h5>
-                                    <div class="text-center"><a href = "<?php echo base_url('index.php/Admin/delete_image/')."$image->imageId";?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
+                                    <div class="text-center"><a href = "<?php echo base_url('index.php/User_Profile/delete_image/')."$image->imageId";?>" ><i style="color: red;" class="fas fa-trash"></i></a></div>
                                 </div>
                             </div>
                         </div>
