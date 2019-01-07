@@ -46,7 +46,7 @@
                 <div class="col-lg-6 text-white showcase-img" style="background-image: url(<?=base_url('asset/home/king5.jpg')?>);border-radius: 50px;"></div>
                 <div class="col-lg-6 my-auto showcase-text">
                     <h2 style="color: #004594">See various maps related to birds...</h2>
-                    <a href="<?=base_url()?>" class="btn btn-outline-danger" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> See Maps </a>
+                    <a href="<?php echo base_url('index.php/home/distribution_map') ?>" class="btn btn-outline-danger" style="border-radius: 40px; font-weight: bold; margin-top: 20px; font-size: 20px;"> See Maps </a>
                 </div>
             </div>
             <div class="row no-gutters">

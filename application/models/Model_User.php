@@ -100,9 +100,31 @@ class Model_user extends CI_Model {
 
     }
 
+    public function my_events() {
+
+        $id = $this->session->userdata('id');
+
+        $query = $this->db->query("SELECT event.id, event.title, event.timeStamp FROM siyothlk.event WHERE event.userId = '$id';");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+    }
+
     public function get_edit_article ($id) {
 
         $query = $this->db->query("SELECT article.id, article.title, article.details FROM siyothlk.article WHERE article.id = $id;");
+        return $query->row(0);
+
+    }
+
+    public function get_edit_event ($id) {
+
+        $query = $this->db->query("SELECT event.id, event.title, event.details FROM siyothlk.event WHERE event.id = $id;");
         return $query->row(0);
 
     }
@@ -120,9 +142,28 @@ class Model_user extends CI_Model {
 
     }
 
+    public function submit_edit_event() {
+
+        $data = array(
+            'title' => $this->input->post('title'),
+            'details' => $this->input->post('details'),
+            'timeStamp' => date ('Y-m-d H:i:s')
+        );
+
+        $this->db->where('id', $this->input->post('id'));
+        return $this->db->update('event', $data);
+
+    }
+
     public function delete_article($id) {
 
         return $this->db->delete('article', array('id' => $id));
+
+    }
+
+    public function delete_event($id) {
+
+        return $this->db->delete('event', array('id' => $id));
 
     }
 
@@ -157,7 +198,24 @@ class Model_user extends CI_Model {
 
         $ids = array('reply_id' => $reply_id , 'forum_id' => $post_id);
         return $this->db->delete('forum_reply' , $ids);
+      
+    public function get_users() {
 
+        $query = $this->db->query("SELECT user.userId, user.username, user.email FROM siyothlk.user WHERE memberFlag = 1;");
+
+        if($query->num_rows()>0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+
+    }
+
+    function delete_user($id) {
+      
+        return $this->db->delete('user', array('userId' => $id));
+      
     }
 
 

@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-md-6" style="margin-top: 20px;">
                         <div class="card bg-light card-body dash-box">
-                            <a href="<?php echo base_url('index.php/admin/admin_manage_users')?>"><h4><i class="fas fa-users-cog"></i></h4></a>
+                            <a href="<?php echo base_url('index.php/admin/manage_users')?>"><h4><i class="fas fa-users-cog"></i></h4></a>
                             <p>Manage Users</p>
                         </div>
                     </div>

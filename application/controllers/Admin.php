@@ -35,7 +35,61 @@ class Admin extends CI_Controller {
     }
 
     public function articles() {
-        $this->load->view('admin/admin_dash_articles');
+
+        $this->load->model('Model_News_Articles');
+        $result['articles'] = $this->Model_News_Articles->get_articles();
+
+        if($result!=false) {
+            $this->load->view('admin/admin_dash_articles', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function events() {
+
+        $this->load->model('Model_Events');
+        $result['events'] = $this->Model_Events->get_events();
+
+        if($result!=false) {
+            $this->load->view('admin/admin_dash_events', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function manage_users() {
+
+        $this->load->model('Model_User');
+        $result['users'] = $this->Model_User->get_users();
+
+        if($result!=false) {
+            $this->load->view('admin/admin_dash_manage_users', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function delete_user($userId) {
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->delete_user($userId);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> User Deleted Successfully! </div>');
+            redirect('admin/manage_users');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/manage_users');
+
+        }
+
     }
 
     public function add_news() {
@@ -254,6 +308,58 @@ class Admin extends CI_Controller {
 
     }
 
+    public function edit_article($id) {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->get_edit_article($id);
+
+        if($result!=false) {
+
+            $data['article'] = array(
+
+                'id' => $result->id,
+                'title' => $result->title,
+                'details' => $result->details
+
+            );
+
+            $this->load->view('admin/edit_article', $data);
+
+        }
+
+        else {
+            echo "Something went wrong !";
+
+        }
+
+    }
+
+    public function edit_event($id) {
+
+        $this->load->model('Model_Events');
+        $result = $this->Model_Events->get_edit_event($id);
+
+        if($result!=false) {
+
+            $data['event'] = array(
+
+                'id' => $result->id,
+                'title' => $result->title,
+                'details' => $result->details
+
+            );
+
+            $this->load->view('admin/edit_event', $data);
+
+        }
+
+        else {
+            echo "Something went wrong !";
+
+        }
+
+    }
+
     public function delete_reply($post_id , $reply_id) {
         $data['post_id'] = $post_id;
         $data['reply_id'] = $reply_id;
@@ -292,6 +398,36 @@ class Admin extends CI_Controller {
 
     }
 
+    public function submit_edit_article () {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->submit_edit_article();
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Edited Article Submitted Successfully! </div>');
+            redirect('admin/articles');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/articles');
+        }
+
+    }
+
+    public function submit_edit_event () {
+
+        $this->load->model('Model_Events');
+        $result = $this->Model_Events->submit_edit_event();
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Edited Event Submitted Successfully! </div>');
+            redirect('admin/events');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/events');
+        }
+
+    }
+
     public function delete_news($id) {
 
         $this->load->model('Model_News_Articles');
@@ -303,6 +439,22 @@ class Admin extends CI_Controller {
         } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
             redirect('admin/news');
+
+        }
+
+    }
+
+    public function delete_event($id) {
+
+        $this->load->model('Model_Events');
+        $result = $this->Model_Events->delete_event($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Event Deleted Successfully! </div>');
+            redirect('admin/events');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/events');
 
         }
 
