@@ -16,6 +16,20 @@ class User_Profile extends CI_Controller {
 
     }
 
+    public function my_events() {
+
+        $this->load->model('Model_User');
+        $result['events'] = $this->Model_User->my_events();
+
+        if($result!=false) {
+            $this->load->view('user/my_events', $result);
+        }
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
     public function my_forum_posts() {
 
         $this->load->view('user/my_forum_posts');
@@ -137,6 +151,31 @@ class User_Profile extends CI_Controller {
 
     }
 
+    public function edit_event($id) {
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->get_edit_event($id);
+
+        if($result!=false) {
+
+            $data['event'] = array(
+
+                'id' => $result->id,
+                'title' => $result->title,
+                'details' => $result->details
+
+            );
+
+            $this->load->view('user/edit_event', $data);
+
+        }
+
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
     public function submit_edit_article () {
 
         $this->load->model('Model_User');
@@ -152,6 +191,21 @@ class User_Profile extends CI_Controller {
 
     }
 
+    public function submit_edit_event () {
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->submit_edit_event();
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Edited Event Submitted Successfully! </div>');
+            redirect('User_Profile/my_events');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('User_Profile/my_events');
+        }
+
+    }
+
     public function delete_article($id) {
 
         $this->load->model('Model_User');
@@ -163,6 +217,21 @@ class User_Profile extends CI_Controller {
         } else {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
             redirect('User_Profile/my_articles');
+        }
+
+    }
+
+    public function delete_event($id) {
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->delete_event($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Event Deleted Successfully! </div>');
+            redirect('User_Profile/my_events');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('User_Profile/my_events');
         }
 
     }

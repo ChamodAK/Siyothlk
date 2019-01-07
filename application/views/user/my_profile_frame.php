@@ -17,6 +17,11 @@
                 <div class="list-group">
                     <a href="<?php echo base_url('index.php/home/my_profile')?>" class="list-group-item list-group-item-action <?php if($panel=='my_profile'){echo " active";}?>"><i class="fas fa-user-circle"></i> My Profile </a>
                     <a href="<?php echo base_url('index.php/user_profile/my_articles')?>" class="list-group-item list-group-item-action <?php if($panel=='my_articles'){echo " active";}?>"><i class="fas fa-book"></i> My Articles </a>
+<<<<<<< HEAD
+=======
+                    <a href="<?php echo base_url('index.php/user_profile/my_events')?>" class="list-group-item list-group-item-action <?php if($panel=='my_events'){echo " active";}?>"><i class="far fa-clock"></i></i> My Events </a>
+                    <a href="<?php echo base_url('index.php/user_profile/my_forum_posts')?>" class="list-group-item list-group-item-action <?php if($panel=='my_forum_posts'){echo " active";}?>"><i class="fas fa-question-circle"></i> My Forum Posts </a>
+>>>>>>> acc8b30ae415a223681380ca512532bdc3ab470e
                     <a href="<?php echo base_url('index.php/user_profile/my_images')?>" class="list-group-item list-group-item-action <?php if($panel=='my_images'){echo " active";}?>"><i class="fas fa-question-circle"></i> My Images </a>
 
                 </div>

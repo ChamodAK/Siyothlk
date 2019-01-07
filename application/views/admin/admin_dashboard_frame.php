@@ -19,6 +19,8 @@
                         <a href="<?php echo base_url('index.php/admin/wiki')?>" class="list-group-item list-group-item-action <?php if($panel=='wiki'){echo " active";}?>"><i class="fas fa-feather"></i> Wiki Contents</a>
                         <a href="<?php echo base_url('index.php/admin/news')?>" class="list-group-item list-group-item-action <?php if($panel=='news'){echo " active";}?>"><i class="fas fa-paper-plane"></i> News</a>
                         <a href="<?php echo base_url('index.php/admin/articles')?>" class="list-group-item list-group-item-action <?php if($panel=='articles'){echo " active";}?>"><i class="fas fa-book"></i> Articles</a>
+                        <a href="<?php echo base_url('index.php/admin/events')?>" class="list-group-item list-group-item-action <?php if($panel=='events'){echo " active";}?>"><i class="far fa-clock"></i> Events</a>
+                        <a href="<?php echo base_url('index.php/admin/manage_users')?>" class="list-group-item list-group-item-action <?php if($panel=='manage_users'){echo " active";}?>"><i class="fas fa-users-cog"></i> Manage Users</a>
                     </div>
                 </div>
                 <div class="col-md-9">
