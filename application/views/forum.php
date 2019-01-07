@@ -6,7 +6,7 @@
     }
 
     .created-col{
-        min-width: 20em;
+        min-width: 14em;
     }
 </style>
 
@@ -60,9 +60,9 @@
                             <div><?php echo $post->timeStamp;?></div>
 
                             <?php if($this->session->userdata('username') == 'admin'): ?>
-                                <div class="tect-right"><a href="<?=base_url('index.php/Admin/delete_topic/') . $post->id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
+                                <div class="text-right"><a href="<?=base_url('index.php/Admin/delete_topic/') . $post->id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
                             <?php elseif($this->session->userdata('username') == $post->username): ?>
-                                <div class="tect-right"><a href="<?=base_url('index.php/User_Profile/delete_topic/') . $post->id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
+                                <div class="text-right"><td ><a href = "<?php echo base_url('index.php/user_profile/edit_topic/').$post->id?>" ><i style='color: blue;' class="fas fa-edit"></i></a > <a href="<?=base_url('index.php/User_Profile/delete_topic/') . $post->id?>"><i style="color: red;" class="fas fa-trash"></i></a></div>
                             <?php endif; ?>
 
                         </td>

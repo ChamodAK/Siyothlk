@@ -247,4 +247,44 @@ class User_Profile extends CI_Controller {
         }
     }
 
+    public function edit_topic($id) {
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->get_edit_topic($id);
+
+        if($result!=false) {
+
+            $data['topic'] = array(
+
+                'id' => $result->id,
+                'title' => $result->title,
+                'details' => $result->details
+
+            );
+
+            $this->load->view('user/edit_forum_topic', $data);
+
+        }
+
+        else {
+            echo "Something went wrong !";
+        }
+
+    }
+
+    public function submit_edit_topic () {
+
+        $this->load->model('Model_User');
+        $result = $this->Model_User->submit_edit_topic();
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Edited Forum Topic Submitted Successfully! </div>');
+            redirect('Home/forum');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('Home/forum');
+        }
+
+    }
+
 }
