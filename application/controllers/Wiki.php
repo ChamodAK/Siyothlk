@@ -2,6 +2,7 @@
 
 class Wiki extends CI_Controller{
 
+    //show full detail page of a particular bird
     public function get_full_bird ($birdId) {
 
         $this->load->model('Model_Bird_Wiki');
@@ -31,6 +32,7 @@ class Wiki extends CI_Controller{
 
     }
 
+    //display editable version of details of a particular bird
     public function edit_bird_view($birdId) {
 
         $this->load->model('Model_Bird_Wiki');
@@ -49,13 +51,13 @@ class Wiki extends CI_Controller{
             $this->load->view('edit_bird', $data);
 
         }
-
         else {
             echo "Something went wrong !";
         }
 
     }
 
+    //display editable version of details of a particular bird for admin
     public function edit_bird_view_admin($birdId) {
 
         $this->load->model('Model_Bird_Wiki');
@@ -80,6 +82,7 @@ class Wiki extends CI_Controller{
 
     }
 
+    //add changes of a bird made by a user to database
     public function edit_bird () {
 
         $this->load->model('Model_Bird_Wiki');
@@ -96,6 +99,7 @@ class Wiki extends CI_Controller{
 
     }
 
+    //handle process when admin delete a bird
     public function delete_bird ($birdId) {
 
         $this->load->model('Model_Bird_Wiki');
@@ -111,6 +115,7 @@ class Wiki extends CI_Controller{
 
     }
 
+    //display bird categories home page
     public function categories() {
 
         $this->load->model('Model_Bird_Wiki');
@@ -125,6 +130,7 @@ class Wiki extends CI_Controller{
 
     }
 
+    //display all the details of a particular bird category
     public function get_full_category ($id) {
 
         $this->load->model('Model_Bird_Wiki');
@@ -142,6 +148,7 @@ class Wiki extends CI_Controller{
 
     }
 
+    //display full bird list in bird wiki category section
     public function bird_list() {
 
         $this->load->model('Model_Bird_Wiki');
@@ -156,12 +163,14 @@ class Wiki extends CI_Controller{
 
     }
 
+    //display advanced search questionnaire
     public function advanced_search_view() {
 
         $this->load->view('advanced_search');
 
     }
 
+    //handle the process after user submitted answers to the advanced search questionnaire
     public function advanced_search() {
 
         $size = $this->input->post('size');

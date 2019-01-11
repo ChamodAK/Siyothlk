@@ -2,10 +2,12 @@
 
 class Admin extends CI_Controller {
 
+    //display admin dashboard main page
     public function index() {
         $this->load->view('admin/admin_dash_main');
     }
 
+    //display admin wiki content management page
     public function wiki() {
 
         $this->load->model('Model_Bird_Wiki');
@@ -20,6 +22,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //display all the news posted by admin
     public function news() {
 
         $this->load->model('Model_News_Articles');
@@ -34,6 +37,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //display all the articles in the database
     public function articles() {
 
         $this->load->model('Model_News_Articles');
@@ -48,6 +52,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //display all the events in the database
     public function events() {
 
         $this->load->model('Model_Events');
@@ -62,6 +67,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //display all the users in the database
     public function manage_users() {
 
         $this->load->model('Model_User');
@@ -76,6 +82,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin click delete user button
     public function delete_user($userId) {
 
         $this->load->model('Model_User');
@@ -92,10 +99,14 @@ class Admin extends CI_Controller {
 
     }
 
+    //display form to add a new news
     public function add_news() {
+
         $this->load->view('admin/admin_dash_add_news', array('error' => ' '));
+
     }
 
+    //handle process when admin submit add new news form
     public function add_new_news() {
 
         $this->form_validation->set_rules('title', 'Title', 'required');
@@ -143,12 +154,14 @@ class Admin extends CI_Controller {
 
     }
 
+    //display interface to add a new bird
     public function add_bird() {
 
         $this->load->view('admin/add_bird_form', array('error' => ' '));
 
     }
 
+    //display list of all birds to be edited by admin
     public function edit_bird() {
 
         $this->load->model('Model_Bird_Wiki');
@@ -163,6 +176,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin approve changes done by user
     public function approve_changes($id) {
 
         $this->load->model('Model_Bird_Wiki');
@@ -178,6 +192,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin dismiss changes done by user
     public function dismiss_changes($id) {
 
         $this->load->model('Model_Bird_Wiki');
@@ -193,6 +208,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin submitted edited bird details of a particular bird
     public function edit_bird_admin () {
 
         $this->load->model('Model_Bird_Wiki');
@@ -208,14 +224,15 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin submit a new bird form
     public function add_new_bird() {
 
         $this->form_validation->set_rules('comName', 'Common Name', 'trim|required');
         $this->form_validation->set_rules('sciName', 'Scientific Name', 'trim|required|is_unique[bird.sciName]', array('is_unique' => 'Bird is already exists'));
-        $this->form_validation->set_rules('size', 'Bird Size', 'trim|required|max_length[2]');
-        $this->form_validation->set_rules('category', 'Category', 'trim|required|max_length[1]');
+//        $this->form_validation->set_rules('size', 'Bird Size', 'trim|required|max_length[2]');
+//        $this->form_validation->set_rules('category', 'Category', 'trim|required|max_length[1]');
         $this->form_validation->set_rules('colour1', 'Colour 01', 'trim|required');
-        $this->form_validation->set_rules('location1', 'Location 01', 'trim|required');
+//        $this->form_validation->set_rules('location1', 'Location 01', 'trim|required');
         $this->form_validation->set_rules('map', 'Distribution Map', 'required');
         $this->form_validation->set_rules('details', 'Bird Details', 'required');
         $this->form_validation->set_rules('imgName', 'Image Name', 'trim|required|is_unique[bird.image]', array('is_unique' => 'Image name already exists'));
@@ -260,15 +277,16 @@ class Admin extends CI_Controller {
     }
 
 
+    //confirm forum topic deletion
     public function delete_topic($id) {
+
         $data['id'] = $id;
         $this->load->view('admin/admin_delete_topic' , $data);
 
-
     }
 
+    //handle deleting forum topic process
     public function delete_topic_confirm($id) {
-
 
         $this->load->model('Model_Admin');
         $result = $this->Model_Admin->delete_topic_confirm($id);
@@ -282,6 +300,7 @@ class Admin extends CI_Controller {
         }
     }
 
+    //display form to edit news
     public function edit_news($id) {
 
         $this->load->model('Model_News_Articles');
@@ -308,6 +327,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //display form to edit article
     public function edit_article($id) {
 
         $this->load->model('Model_News_Articles');
@@ -334,6 +354,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //display form to edit event
     public function edit_event($id) {
 
         $this->load->model('Model_Events');
@@ -352,37 +373,38 @@ class Admin extends CI_Controller {
             $this->load->view('admin/edit_event', $data);
 
         }
-
         else {
             echo "Something went wrong !";
-
         }
 
     }
 
+    //confirm reply deletion by admin
     public function delete_reply($post_id , $reply_id) {
+
         $data['post_id'] = $post_id;
         $data['reply_id'] = $reply_id;
         $this->load->view('admin/admin_delete_reply' , $data);
 
+    }
+
+    //handle reply deletion process
+    public function delete_reply_confirm($post_id , $reply_id) {
+
+        $this->load->model('Model_Admin');
+        $result = $this->Model_Admin->delete_reply_confirm($post_id, $reply_id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Deleted Successfully! </div>');
+            redirect('Forum/full_post/' . "$post_id");
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
+            redirect('Forum/full_post/' . "$post_id");
+        }
 
     }
 
-    public function delete_reply_confirm($post_id , $reply_id) {
-
-
-                $this->load->model('Model_Admin');
-                $result = $this->Model_Admin->delete_reply_confirm($post_id, $reply_id);
-
-                if ($result) {
-                    $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> Reply Deleted Successfully! </div>');
-                    redirect('Forum/full_post/' . "$post_id");
-                } else {
-                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
-                    redirect('Forum/full_post/' . "$post_id");
-                }
-            }
-
+    //handle process when admin submit edit news form
     public function submit_edit_news () {
 
         $this->load->model('Model_News_Articles');
@@ -398,6 +420,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin submit edit article form
     public function submit_edit_article () {
 
         $this->load->model('Model_News_Articles');
@@ -413,6 +436,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin submit edit event form
     public function submit_edit_event () {
 
         $this->load->model('Model_Events');
@@ -428,6 +452,7 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin click delete news button
     public function delete_news($id) {
 
         $this->load->model('Model_News_Articles');
@@ -444,6 +469,24 @@ class Admin extends CI_Controller {
 
     }
 
+    //handle process when admin click delete article button
+    public function delete_article($id) {
+
+        $this->load->model('Model_News_Articles');
+        $result = $this->Model_News_Articles->delete_article($id);
+
+        if ($result) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-primary text-center" role="alert"> News Deleted Successfully! </div>');
+            redirect('admin/articles');
+        } else {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Oops! Something went wrong </div>');
+            redirect('admin/articles');
+
+        }
+
+    }
+
+    //handle process when admin click delete event button
     public function delete_event($id) {
 
         $this->load->model('Model_Events');
@@ -460,15 +503,16 @@ class Admin extends CI_Controller {
 
     }
 
+    //confirm image deletion by admin
     public function delete_image($id) {
+
         $data['id'] = $id;
         $this->load->view('admin/admin_delete_image' , $data);
 
-
     }
 
+    //handle image deletion process by admin
     public function delete_image_confirm($id) {
-
 
         $this->load->model('Model_Admin');
         $result = $this->Model_Admin->delete_image_confirm($id);
@@ -480,6 +524,7 @@ class Admin extends CI_Controller {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
             redirect('Home/gallery');
         }
+
     }
 
 

@@ -3,22 +3,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+    //display home page
 	public function index() {
-		$this->load->view('home');
+
+            $this->load->model('Model_Pic_Map');
+            $locations = $this->Model_Pic_Map->get_all_locations();
+
+            $data = array(
+                'locations' => $locations,
+//                'error' => ''
+            );
+
+            $this->load->view('home', $data);
+
 	}
 
+    //display login page
 	public function login() {
 	    $this->load->view('login');
     }
 
+    //display signup page
     public function sign_up() {
         $this->load->view('sign_up');
     }
 
+    //display admin dashboard page
     public function dashboard() {
         $this->load->view('admin/admin_dash_main');
     }
 
+    //display bird wiki home page
     public function bird_wiki() {
 
         $this->load->model('Model_Bird_Wiki');
@@ -33,6 +48,7 @@ class Home extends CI_Controller {
 
     }
 
+    //display sanctuary page
     public function sanctuary() {
 
         $this->load->model('Model_Sanctuary');
@@ -40,6 +56,7 @@ class Home extends CI_Controller {
         $this->load->view('sanctuary' , $this->data);
     }
 
+    //display news and article page
     public function news_and_articles() {
 
 	    $this->load->model('Model_News_Articles');
@@ -57,6 +74,7 @@ class Home extends CI_Controller {
 
     }
 
+    //display events page
     public function events() {
 
         $this->load->model('Model_Events');
@@ -73,6 +91,7 @@ class Home extends CI_Controller {
 
     }
 
+    //display user profile page
     public function my_profile() {
 
         $id = $this->session->userdata('id');
@@ -97,6 +116,7 @@ class Home extends CI_Controller {
 
     }
 
+    //display gallery page
     public function gallery(){
 
         $this->load->model("Model_gallery");
@@ -108,6 +128,7 @@ class Home extends CI_Controller {
         }
     }
 
+    //display forum page
     public function forum() {
 
         $this->load->model('Model_Forum');
@@ -135,17 +156,21 @@ class Home extends CI_Controller {
 
     }
 
+    //display sanctuary map page
     public function sanctuary_map() {
 	    $this->load->view('map_sanctuary');
     }
 
+    //display birds distribution map page
     public function distribution_map() {
+
         $this->load->model('Model_Bird_Wiki');
         $result['birds'] = $this->Model_Bird_Wiki->get_bird_list();
-
         $this->load->view('distribution_map', $result);
+
     }
 
+    //display full distribution map page of a particular bird
     public function get_bird_map($id) {
         $this->load->model('Model_Bird_Wiki');
         $result['birds'] = $this->Model_Bird_Wiki->get_bird_list();
@@ -154,6 +179,7 @@ class Home extends CI_Controller {
         $this->load->view('bird_map', $result);
     }
 
+    //display search result when a search occur
     public function search() {
 
         $this->load->model('Model_Search');
@@ -168,6 +194,7 @@ class Home extends CI_Controller {
 
     }
 
+    //display results when a image search happen in gallery page
     public function image_search() {
 
         $this->load->model('Model_Search');

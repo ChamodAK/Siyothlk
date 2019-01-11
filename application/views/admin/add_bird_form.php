@@ -33,12 +33,31 @@
 
                 <div class="form-group">
                     <label> Bird Size </label>
-                    <input type="text" class="form-control" placeholder="r-robin, m-myna, c-crow, ch-chicken, e-egrate, p-peacock" value="<?php echo set_value('size'); ?>" name="size">
+                    <select name="size" >
+                        <option value="r">Robin</option>
+                        <option value="m">Myna</option>
+                        <option value="c">Crow</option>
+                        <option value="ch">Chicken</option>
+                        <option value="e">Egret</option>
+                        <option value="p">Peacock</option>
+                    </select>
+<!--                    <input type="text" class="form-control" placeholder="r-robin, m-myna, c-crow, ch-chicken, e-egrate, p-peacock" value="--><?php //echo set_value('size'); ?><!--" name="size">-->
                 </div>
+
+
 
                 <div class="form-group">
                     <label> Bird Category </label>
-                    <input type="text" class="form-control" placeholder="e-endemic, h-home garden, m-migrant, r-rainforest, s-shrub, u-urban areas, w-wetland " value="<?php echo set_value('category'); ?>" name="category">
+                    <select name="category" >
+                        <option value="e">Endemic</option>
+                        <option value="h">Home Garden</option>
+                        <option value="m">Migrant</option>
+                        <option value="r">Rainforest</option>
+                        <option value="s">Shrub</option>
+                        <option value="u">Urban Areas</option>
+                        <option value="w">Wetland</option>
+                    </select>
+<!--                    <input type="text" class="form-control" placeholder="e-endemic, h-home garden, m-migrant, r-rainforest, s-shrub, u-urban areas, w-wetland " value="--><?php //echo set_value('category'); ?><!--" name="category">-->
                 </div>
 
                 <div class="form-row">
@@ -59,7 +78,6 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-group">
-                            <label> Location 01 </label>
                             <input type="text" class="form-control" placeholder="Enter bird location" value="<?php echo set_value('location1'); ?>" name="location1">
                         </div>
                     </div>

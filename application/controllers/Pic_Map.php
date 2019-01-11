@@ -2,15 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pic_Map extends CI_Controller {
-
-	public function __construct(){
-		parent::__construct();
-		$this->load->library('javascript');
-	}
 	
-	public function index()
-	{
-		// Load the Birds model and get all the saved locations
+	public function index() {
+
+		// Load the pic_map model and get all the saved locations
 		$this->load->model('Model_Pic_Map');
 		$locations = $this->Model_Pic_Map->get_all_locations();
 
@@ -20,7 +15,7 @@ class Pic_Map extends CI_Controller {
 		);
 
 		// Pass the retrieved locations to the view
-		$this->load->view('pic_map',$data);
+		$this->load->view('pic_map', $data);
 	}
 
 	public function saveLocation() {
@@ -47,11 +42,11 @@ class Pic_Map extends CI_Controller {
 
             // Check if the insert operation is successful
             if($status) {
-                $this->session->set_flashdata('session_message', 'Location Saved Successfully!');
+                $this->session->set_flashdata('session_message', 'Location & Image Saved Successfully!');
                 $this->session->set_flashdata('session_status', true);
             }
             else {
-                $this->session->set_flashdata('session_message', 'Location Cannot Be Saved!');
+                $this->session->set_flashdata('session_message', 'Location & Image Cannot Be Saved!');
                 $this->session->set_flashdata('session_status', false);
             }
 

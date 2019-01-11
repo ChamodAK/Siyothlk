@@ -12,6 +12,7 @@
                 }
                 ?>
                 <div class="row">
+                    <?php if(!(empty($images))): ?>
                     <?php foreach ($images as $image) { ?>
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
@@ -25,6 +26,7 @@
                             </div>
                         </div>
                     <?php } ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

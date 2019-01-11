@@ -2,12 +2,14 @@
 
 class Events extends CI_Controller {
 
+    //display add new event form
     public function add_event() {
 
         $this->load->view('add_event', array('error' => ' '));
 
     }
 
+    //handle process after add new event form submitted
     public function add_new_event() {
 
         $this->form_validation->set_rules('title', 'Title', 'required');
@@ -57,6 +59,7 @@ class Events extends CI_Controller {
 
     }
 
+    //display full details of an event
     public function view_full_event () {
 
         $id = $this->input->get('id');

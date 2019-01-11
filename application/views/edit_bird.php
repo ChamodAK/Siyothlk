@@ -1,5 +1,6 @@
 <?php $page = 'bird_wiki'; include 'header.php' ?>
 
+    <!-- check whether user is logged in or not -->
     <?php
     if(!$this->session->userdata('username')) {
         $this->session->set_userdata('page_url',  current_url());

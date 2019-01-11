@@ -13,6 +13,7 @@
             </ol>
         </nav>
 
+        <!-- display messages if there are any -->
         <?php
         if($this->session->flashdata('msg')) {
             echo $this->session->flashdata('msg');

@@ -5,6 +5,7 @@
         <h4 class="card-header">Change Password</h4>
         <div class="card-body">
 
+            <!-- display messages if there are any -->
             <?php
             if($this->session->flashdata('msg')) {
                 echo $this->session->flashdata('msg');

@@ -2,6 +2,7 @@
 
 class User_Profile extends CI_Controller {
 
+    //display articles posted by the user
     public function my_articles() {
 
         $this->load->model('Model_User');
@@ -16,6 +17,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //display events posted by the user
     public function my_events() {
 
         $this->load->model('Model_User');
@@ -30,23 +32,21 @@ class User_Profile extends CI_Controller {
 
     }
 
-    public function my_forum_posts() {
-
-        $this->load->view('user/my_forum_posts');
-
-    }
-
+    //display form to change user's username
     public function change_username() {
 
         $this->load->view('user/change_username');
 
     }
+
+    //display form to change user's password
     public function change_password() {
 
         $this->load->view('user/change_password');
 
     }
 
+    //handle process after user submit changed username details
     public function add_changed_username() {
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[user.username]', array('is_unique' => 'Username is already taken'));
@@ -86,6 +86,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //handle process after user submit new password details
     public function add_changed_password() {
 
         $this->form_validation->set_rules('np1', 'New Password', 'trim|required|min_length[5]');
@@ -126,6 +127,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //display form to edit relevant article
     public function edit_article($id) {
 
         $this->load->model('Model_User');
@@ -151,6 +153,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //display form to edit relevant event
     public function edit_event($id) {
 
         $this->load->model('Model_User');
@@ -176,6 +179,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //handle process when user submit edited article
     public function submit_edit_article () {
 
         $this->load->model('Model_User');
@@ -191,6 +195,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //handle process when user submit edited event
     public function submit_edit_event () {
 
         $this->load->model('Model_User');
@@ -206,6 +211,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //handle process when user wants to delete article
     public function delete_article($id) {
 
         $this->load->model('Model_User');
@@ -221,6 +227,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //handle process when user wants to delete event
     public function delete_event($id) {
 
         $this->load->model('Model_User');
@@ -236,6 +243,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //display images uploaded to the gallery by the user
     public function my_images() {
 
         $this->load->model('Model_User');
@@ -250,13 +258,14 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //handle process when user click delete image button
     public function delete_image($id) {
         $data['id'] = $id;
         $this->load->view('user/delete_image' , $data);
     }
 
+    //handle process when user surely wants to delete an image
     public function delete_image_confirm($id) {
-
 
         $this->load->model('Model_User');
         $result = $this->Model_User->delete_image_confirm($id);
@@ -270,16 +279,16 @@ class User_Profile extends CI_Controller {
         }
     }
 
+    //handle process when user click delete topic button in forum section
     public function delete_topic($id) {
+
         $data['id'] = $id;
-
         $this->load->view('user/delete_forum_topic' , $data);
-
 
     }
 
+    //handle process when user surely wants to delete a topic in forum section
     public function delete_topic_confirm($id) {
-
 
         $this->load->model('Model_User');
         $result = $this->Model_User->delete_topic_confirm($id);
@@ -293,16 +302,17 @@ class User_Profile extends CI_Controller {
         }
     }
 
+    //handle process when user click delete reply button in forum section
     public function delete_reply($post_id , $reply_id) {
+
         $data['post_id'] = $post_id;
         $data['reply_id'] = $reply_id;
         $this->load->view('user/delete_forum_reply' , $data);
 
-
     }
 
+    //handle process when user surely wants to delete a reply in forum section
     public function delete_reply_confirm($post_id , $reply_id) {
-
 
         $this->load->model('Model_User');
         $result = $this->Model_User->delete_reply_confirm($post_id, $reply_id);
@@ -314,8 +324,10 @@ class User_Profile extends CI_Controller {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center" role="alert"> Operation Failed! </div>');
             redirect('Forum/full_post/' . "$post_id");
         }
+
     }
 
+    //handle process when user wants to edit a topic in forum section
     public function edit_topic($id) {
 
         $this->load->model('Model_User');
@@ -341,6 +353,7 @@ class User_Profile extends CI_Controller {
 
     }
 
+    //handle submitting process when user edit a topic in forum section
     public function submit_edit_topic () {
 
         $this->load->model('Model_User');

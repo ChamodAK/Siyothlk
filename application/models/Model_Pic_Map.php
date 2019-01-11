@@ -2,7 +2,7 @@
 
 class Model_Pic_Map extends CI_Model {
 
-    // Get all the entries from items table
+    // Get all the entries from table
     public function get_all_locations() {
 
         $query = $this->db->get('pic_map');

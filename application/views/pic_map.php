@@ -23,16 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <style type="text/css">
 
-        ::selection { background-color: #E13300; color: white; }
-        ::-moz-selection { background-color: #E13300; color: white; }
-
-        body {
-            background-color: #fff;
-            margin: 40px;
-            font: 13px/20px normal Helvetica, Arial, sans-serif;
-            color: #4F5155;
-        }
-
         a {
             color: #003399;
             background-color: transparent;
@@ -88,12 +78,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
         #map {
-            height: 400px;
+            height: 500px;
             width:100%;
         }
 
         #map2 {
-            height: 400px;
+            height: 500px;
             width:100%;
         }
     </style>
@@ -169,20 +159,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
         </ul>
 
-        <?php if (($page == 'gallery') or ($page == 'search_image_result')) {?>
+        <?php if($page == 'gallery' OR $page == 'search_image_result'): ?>
             <form class="form-inline my-2 my-lg-0" action="<?=base_url('index.php/home/image_search')?>" method="post">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-        <?php }?>
-
-        <?php if (!(($page == 'gallery') or ($page == 'search_image_result'))) {?>
+        <?php else: ?>
             <form class="form-inline my-2 my-lg-0" action="<?=base_url('index.php/home/search')?>" method="post">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-        <?php }?>
-
+        <?php endif; ?>
 
         <ul class="navbar-nav navbar-right mr-auto">
             <li class="nav-item">
@@ -192,7 +179,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         echo "Login";
                     }
                     ?>
-                    <span class="sr-only">(current)</span>
                 </a>
             </li>
             <?php
@@ -216,7 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 
-    <!-- Display messages if we have any -->
+    <!-- Display messages if have any -->
     <?php if($this->session->flashdata('session_message') && $this->session->flashdata('session_status')) { ?>
         <div class="alert alert-success">
             <?php echo $this->session->flashdata('session_message') ?>
@@ -242,7 +228,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="body">
         <?php echo form_open_multipart('Pic_Map/saveLocation'); ?>
-<!--        <form id="bird_form" action="--><?php //echo site_url('Pic_Map/saveLocation');?><!--" method="post">-->
+
             <h3>You can contribute to our pic map too...</h3>
 
             <p style="font-size: large; color: #004594;"> Upload your pic, select the location and hit save to upload your image with location<p>
@@ -252,14 +238,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label> Upload an Image </label><br>
 
             <input id="locationval" name="location" type="hidden">
+
             <input type="file" class="" name="img">
 
-<!--            <input type="submit" value="Submit"/>-->
             <button type="submit" class="btn btn-primary"> Submit </button>
 
-<!--        </form>-->
         <?php echo form_close(); ?>
-
     </div>
 
 </div>
@@ -282,11 +266,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             deleteMarkers();
             addMarker(event.latLng);
             var element = document.getElementById('locationval');
-            console.log(event.latLng.lat()+","+event.latLng.lng());
             element.value = event.latLng.lat()+","+event.latLng.lng();
         });
 
         initMap2();
+
     }
 
     // Adds a marker to the map and push to the array.
@@ -310,10 +294,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         setMapOnAll(null);
     }
 
-    // Shows any markers currently in the array.
-    function showMarkers() {
-        setMapOnAll(map);
-    }
+    // // Shows any markers currently in the array.
+    // function showMarkers() {
+    //     setMapOnAll(map);
+    // }
 
     // Deletes all markers in the array by removing references to them.
     function deleteMarkers() {
@@ -327,7 +311,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- ********************************** MAP 2 **************************************** -->
 
 
-<!-- This Script Handles the sletected location display Map -->
+<!-- This Script Handles the selected location display Map -->
 <script>
     var map2;
 
@@ -337,11 +321,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             zoom: 7
         });
 
-        // This event listener will call addMarker() when the map is clicked.
-        map2.addListener('click', function(event) {
-            deleteMarkers();
-            addMarker(event.latLng);
-        });
         var lat,lng;
 
         var markers2 = [];
@@ -353,28 +332,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         foreach($locations as $loc) {
         $latlng = explode(",",$loc->location);
         ?>
-        lat = <?php echo $latlng[0]; ?>;
-        lng = <?php echo $latlng[1]; ?>;
+            lat = <?php echo $latlng[0]; ?>;
+            lng = <?php echo $latlng[1]; ?>;
 
-        // Add a clickable marker on the location
-        markers[count] = addMarkerAndReturn(new google.maps.LatLng({lat: lat, lng: lng}) );
-        markers[count].index = count;
+            // Add a clickable marker on the location
+            markers[count] = addMarkerAndReturn(new google.maps.LatLng({lat: lat, lng: lng}) );
+            markers[count].index = count;
 
-        // Get the image to display on the marker and construct the content string
-        var url = '<?php echo base_url('pic_map/') . $loc->image_link; ?>';
-        var contentString = '<img style="width:100px; height: 70px;" src="'+ url +'" >';
+            // Get the image to display on the marker and construct the content string
+            var url = '<?php echo base_url('pic_map/') . $loc->image_link; ?>';
+            var contentString = '<img style="width:100px; height: 70px;" src="'+ url +'" >';
 
-        // Create the info window
-        infoWindows[count] = new google.maps.InfoWindow({
-            content: contentString
-        });
+            // Create the info window
+            infoWindows[count] = new google.maps.InfoWindow({
+                content: contentString
+            });
 
-        // Add a listner to handle the pin click event to display the bird image
-        markers[count].addListener('click', function() {
-            infoWindows[this.index].open(map2, markers[this.index]);
-        });
+            // Add a listner to handle the pin click event to display the bird image
+            markers[count].addListener('click', function() {
+                infoWindows[this.index].open(map2, markers[this.index]);
+            });
 
-        count = count + 1;
+            count = count + 1;
 
         <?php } ?>
 
@@ -392,7 +371,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXB01t5HDw9ORFjmK4Jze2AxbL_HpeKMY&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoMQIVwrm4YRWhdfe2sgmkVU82Gf454jc&callback=initMap"
         async defer></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

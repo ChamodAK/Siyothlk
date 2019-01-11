@@ -3,9 +3,9 @@
 
 class Model_Events extends CI_Model {
 
+    //get all the events
     public function get_events() {
 
-        //$query = $this->db->query("SELECT event.id, event.title, event.date, event.time, event.venue, event.details, event.timeStamp, event.image, event.userId, user.username FROM siyothlk.event JOIN user on event.userId = user.userId ORDER BY event.timeStamp DESC;");
         $query = $this->db->query("SELECT event.id, event.title, event.details, event.timeStamp, event.image, event.userId, user.username FROM siyothlk.event JOIN user on event.userId = user.userId ORDER BY event.timeStamp DESC;");
 
         if($query->num_rows()>0) {
@@ -15,9 +15,9 @@ class Model_Events extends CI_Model {
             return $data;
         }
 
-
     }
 
+    //add new event to the database
     public function add_new_event($data) {
 
         $data = array(
@@ -34,6 +34,7 @@ class Model_Events extends CI_Model {
 
     }
 
+    //get full details of an event from the database
     public function get_full_event($id) {
 
         $query = $this->db->query("SELECT event.id, event.title, event.details, event.timeStamp, event.image, event.userId, user.username FROM siyothlk.event JOIN user on event.userId = user.userId WHERE event.id=$id;");
@@ -42,6 +43,7 @@ class Model_Events extends CI_Model {
 
     }
 
+    //get full details of an event in rder to edit
     public function get_edit_event ($id) {
 
         $query = $this->db->query("SELECT event.id, event.title, event.details FROM siyothlk.event WHERE event.id = $id;");
@@ -49,6 +51,7 @@ class Model_Events extends CI_Model {
 
     }
 
+    //update database with edited event details
     public function submit_edit_event() {
 
         $data = array(
@@ -62,6 +65,7 @@ class Model_Events extends CI_Model {
 
     }
 
+    //delete an event from the database
     public function delete_event($id) {
 
         return $this->db->delete('event', array('id' => $id));

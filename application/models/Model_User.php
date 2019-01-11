@@ -2,6 +2,7 @@
 
 class Model_user extends CI_Model {
 
+    //add new user to database
     function insert_user_data () {
 
         $data = array(
@@ -16,6 +17,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //check whether login credentials of a user correct or not
     function login_user() {
 
         $username = $this->input->post('username');
@@ -34,6 +36,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //check whether the password provided by the user correct or not
     function password_check() {
 
         $id = $this->session->userdata('id');
@@ -52,6 +55,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //get user's details from database
     public function get_my_profile($id) {
 
         $query = $this->db->query("SELECT user.username, user.email FROM siyothlk.user WHERE user.userId = $id;");
@@ -59,6 +63,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //update database with the newly provided username
     function change_username () {
 
         $data = array(
@@ -72,6 +77,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //update database with newly provided password
     function change_password () {
 
         $data = array(
@@ -85,6 +91,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //get articles posted by the user from database
     public function my_articles() {
 
         $id = $this->session->userdata('id');
@@ -100,6 +107,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //get events posted by the user from database
     public function my_events() {
 
         $id = $this->session->userdata('id');
@@ -115,6 +123,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //get details of the article to edit
     public function get_edit_article ($id) {
 
         $query = $this->db->query("SELECT article.id, article.title, article.details FROM siyothlk.article WHERE article.id = $id;");
@@ -122,6 +131,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //get details of the event to edit
     public function get_edit_event ($id) {
 
         $query = $this->db->query("SELECT event.id, event.title, event.details FROM siyothlk.event WHERE event.id = $id;");
@@ -129,6 +139,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //update database with the edited article by user
     public function submit_edit_article() {
 
         $data = array(
@@ -142,6 +153,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //update database with the edited event by user
     public function submit_edit_event() {
 
         $data = array(
@@ -155,18 +167,21 @@ class Model_user extends CI_Model {
 
     }
 
+    //delete a article from database
     public function delete_article($id) {
 
         return $this->db->delete('article', array('id' => $id));
 
     }
 
+    //delete a event from database
     public function delete_event($id) {
 
         return $this->db->delete('event', array('id' => $id));
 
     }
 
+    //get images uploaded by the user from database
     public function my_images() {
 
         $id = $this->session->userdata('id');
@@ -182,23 +197,29 @@ class Model_user extends CI_Model {
 
     }
 
+    //delete image from database
     function delete_image_confirm($id) {
 
         return $this->db->delete('image', array('imageId' => $id));
 
     }
 
+    //delete forum topic from database
     function delete_topic_confirm($id) {
 
         return $this->db->delete('forum', array('id' => $id));
 
     }
 
+    //delete forum reply from database
     function delete_reply_confirm($post_id , $reply_id) {
 
-        $ids = array('reply_id' => $reply_id , 'forum_id' => $post_id);
-        return $this->db->delete('forum_reply' , $ids);
+        $ids = array('reply_id' => $reply_id, 'forum_id' => $post_id);
+        return $this->db->delete('forum_reply', $ids);
+
+    }
       
+    //get all the registered users in the user table in database
     public function get_users() {
 
         $query = $this->db->query("SELECT user.userId, user.username, user.email FROM siyothlk.user WHERE memberFlag = 1;");
@@ -212,12 +233,14 @@ class Model_user extends CI_Model {
 
     }
 
+    //delete a user from database
     function delete_user($id) {
       
         return $this->db->delete('user', array('userId' => $id));
       
     }
 
+    //get details to edit a forum topic from the database
     public function get_edit_topic ($id) {
 
         $query = $this->db->query("SELECT forum.id, forum.title, forum.details FROM siyothlk.forum WHERE forum.id = $id;");
@@ -225,6 +248,7 @@ class Model_user extends CI_Model {
 
     }
 
+    //update database with details of edited forum topic
     public function submit_edit_topic() {
 
         $data = array(
